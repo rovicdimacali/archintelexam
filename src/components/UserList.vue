@@ -9,13 +9,15 @@
   >
     <div class="form-container">
       <ul>
-        <li v-for="company in companies" :key="company.id">
-          {{ company.name }}
+        <li v-for="user in users" :key="user.id">
+          {{ user.firstname }}
+          {{ user.lastname }}
           <RouterLink
             :to="{
-              name: 'ManageCompany',
+              name: 'ManageUser',
               params: {
-                companyID: company.id,
+                userID: currentUserID,
+                userIdToUpdate: user.id,
               },
             }"
             >Update</RouterLink
@@ -27,17 +29,30 @@
 </template>
 
 <script>
-import { loadAllCompanies } from "../composables/callApi";
+import { loadAllUsers } from "../composables/callApi";
 import { RouterLink, useRoute } from "vue-router";
-import { ref, watch, onMounted } from "vue";
+import { ref, watch } from "vue";
 export default {
   data() {
     return {
-      companies: [],
+      users: [],
     };
   },
   async mounted() {
-    this.companies = await loadAllCompanies();
+    this.users = await loadAllUsers();
+  },
+  setup() {
+    const route = useRoute();
+    const currentUserID = ref();
+
+    watch(
+      () => route.params.userID,
+      (newUserID) => {
+        currentUserID.value = newUserID;
+      }
+    );
+
+    return { currentUserID };
   },
 };
 </script>

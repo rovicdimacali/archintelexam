@@ -3,6 +3,7 @@
   <CompanyForm v-if="showCompanyForm" @close="toggleCompanyForm" />
   <ArticleForm v-if="showArticleForm" @close="toggleArticleForm" />
   <CompanyList v-if="showCompanyList" @close="toggleCompanyList" />
+  <UserList v-if="showUserList" @close="toggleUserList" />
   <h1>Dashboard</h1>
   <button v-if="userType === 'Editor'" @click="toggleUserForm">Add User</button>
   <button v-if="userType === 'Editor'" @click="toggleCompanyForm">
@@ -10,6 +11,9 @@
   </button>
   <button v-if="userType === 'Editor'" @click="toggleCompanyList">
     Manage Company
+  </button>
+  <button v-if="userType === 'Editor'" @click="toggleUserList">
+    Manage User
   </button>
   <button v-if="userType === 'Writer'" @click="toggleArticleForm">
     Create Article
@@ -36,6 +40,7 @@ import UserForm from "../components/UserForm.vue";
 import CompanyForm from "../components/CompanyForm.vue";
 import ArticleForm from "../components/ArticleForm.vue";
 import CompanyList from "../components/CompanyList.vue";
+import UserList from "../components/UserList.vue";
 
 import {
   loadForEditArticles,
@@ -45,13 +50,14 @@ import {
 import { ref, watch, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
 export default {
-  components: { UserForm, CompanyForm, ArticleForm, CompanyList },
+  components: { UserForm, CompanyForm, ArticleForm, CompanyList, UserList },
   data() {
     return {
       showUserForm: false,
       showCompanyForm: false,
       showArticleForm: false,
       showCompanyList: false,
+      showUserList: false,
       atDashboard: true,
     };
   },
@@ -70,6 +76,9 @@ export default {
     },
     toggleCompanyList() {
       this.showCompanyList = !this.showCompanyList;
+    },
+    toggleUserList() {
+      this.showUserList = !this.showUserList;
     },
   },
   setup() {

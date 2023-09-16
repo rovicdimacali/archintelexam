@@ -112,15 +112,27 @@ async function addArticle(newArticle) {
   }
 }
 
-async function updateCompany(id, updateCompany) {
+async function updateCompany(id, updateCompanyForm) {
   try {
     const response = await axios.patch(
       `http://localhost:3000/company/${id}`,
-      updateCompany
+      updateCompanyForm
     );
     return response.data;
   } catch (error) {
-    console.log("Error updating JSON Data", error);
+    console.log("Error updating Company", error);
+  }
+}
+
+async function updateUser(id, updateUserForm) {
+  try {
+    const response = await axios.patch(
+      `http://localhost:3000/users/${id}`,
+      updateUserForm
+    );
+    return response.data;
+  } catch (error) {
+    console.log("Error updating User", error);
   }
 }
 
@@ -136,4 +148,5 @@ export {
   addCompany,
   addArticle,
   updateCompany,
+  updateUser,
 };

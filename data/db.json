@@ -3,7 +3,7 @@
     {
       "id": "1",
       "logo": "sample-logo",
-      "name": "Company AAA",
+      "name": "Company A",
       "status": "Inactive"
     },
     {
@@ -21,7 +21,7 @@
     {
       "id": "df86231b-2f30-4acc-8dbc-6af557bb80f9",
       "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Warner_Bros._%282019%29_logo.svg/1200px-Warner_Bros._%282019%29_logo.svg.png",
-      "name": "Warner Bros.",
+      "name": "Warner Brothers",
       "status": "Active"
     }
   ],
@@ -31,7 +31,7 @@
       "firstname": "John",
       "lastname": "Doe",
       "type": "Writer",
-      "status": "Active"
+      "status": "Inactive"
     },
     {
       "id": "2",

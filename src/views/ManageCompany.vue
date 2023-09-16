@@ -44,7 +44,7 @@
 
 <script>
 import { loadCompany, updateCompany } from "../composables/callApi";
-
+import { useRouter, useRoute } from "vue-router";
 export default {
   props: ["companyID"],
   data() {
@@ -59,6 +59,7 @@ export default {
       this.companyToUpdate.name = this.fetchedCompany[0].name;
       this.companyToUpdate.status = this.fetchedCompany[0].status;
       await updateCompany(this.companyID, this.companyToUpdate);
+      this.backToDashboard();
     },
   },
   async mounted() {
@@ -67,40 +68,18 @@ export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
-    const users = ref([]);
-    const user = ref();
-    const selectedUser = ref();
-    const currentUserID = ref();
 
-    onMounted(async () => {
-      currentUserID.value = route.params.userID;
-      users.value = await loadAllUsers();
-      user.value = await loadUser(currentUserID.value);
-      selectedUser.value = `${user.value[0].firstname} ${user.value[0].lastname}`;
-    });
-
-    watch(
-      () => route.params.userID,
-      (newUserID) => {
-        currentUserID.value = newUserID;
-      }
-    );
-
-    function backToDashboard() {}
-
-    async function updateParamsAndNavigate(newParams) {
+    function backToDashboard() {
       router.push({
-        name: router.currentRoute.value.name,
+        name: "Dashboard",
         params: {
-          userID: newParams,
+          userID: route.params.userID,
         },
         replace: true,
       });
-      user.value = await loadUser(newParams);
-      selectedUser.value = `${user.value[0].firstname} ${user.value[0].lastname}`;
     }
 
-    return { users, updateParamsAndNavigate, currentUserID, selectedUser };
+    return { backToDashboard };
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   {{ selectedUser }}
   <div class="div" style="display: flex; flex-direction: column">
-    <div class="user-box">
+    <div class="user-box" v-if="!isManageRoute">
       <div
         v-for="user in users"
         :key="user.id"
@@ -75,6 +75,14 @@ export default {
     }
 
     return { users, updateParamsAndNavigate, currentUserID, selectedUser };
+  },
+  computed: {
+    isManageRoute() {
+      return (
+        this.$route.name === "ManageCompany" ||
+        this.$route.name === "ManageUser"
+      );
+    },
   },
 };
 </script>
