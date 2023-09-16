@@ -1,13 +1,16 @@
 nav {
   height: 100vh;
-
   width: 200px;
+  margin-left: -200px;
   background: #005f9a;
   color: white;
+  transition: 0.3s all;
+  position: sticky;
+  top: 0;
 
   .title-box {
     font-size: 15px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Warownia", sans-serif;
     letter-spacing: 2px;
     font-weight: 700;
     text-align: center;
@@ -18,20 +21,23 @@ nav {
     font-size: 15px;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border-top: 1px solid #3d82ad;
     border-bottom: 1px solid #3d82ad;
     padding: 10px;
     cursor: pointer;
 
-    img {
-      width: 40px;
-      height: 40px;
-    }
-    p {
-      margin: 0;
-      margin-left: 10px;
+    .user {
+      align-items: center;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+      p {
+        margin: 0;
+        margin-left: 10px;
+      }
     }
   }
 
@@ -89,10 +95,54 @@ nav {
 
     a.active {
       background: #3d82ad;
+      font-weight: bold;
     }
 
     a:hover {
       background: #3d82ad;
     }
   }
+}
+
+nav.toggled {
+  margin-left: 0;
+}
+
+header {
+  height: 52px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #005f9a;
+  color: white;
+  align-items: center;
+  transition: 0.3s all;
+
+  .bars {
+    font-size: 20px;
+    padding: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0;
+    transition: 0.5s all;
+    cursor: pointer;
+  }
+
+  .bars:hover {
+    background: #3d82ad;
+  }
+
+  .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "h Hadir Sans";
+    font-size: 20px;
+  }
+}
+
+header.toggled {
+  left: 200px;
 }

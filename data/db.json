@@ -65,9 +65,9 @@
   "article": [
     {
       "id": "1",
-      "image": "sample-image",
+      "image": "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg",
       "title": "Sample Title 12324",
-      "link": "sample-url",
+      "link": "https://www.google.com",
       "date": "2023-09-16",
       "content": "<p>Sample Content</p>",
       "status": "Published",
@@ -77,9 +77,9 @@
     },
     {
       "id": "2",
-      "image": "sample-image",
+      "image": "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg",
       "title": "Sample Title 2",
-      "link": "sample-url",
+      "link": "https://www.google.com",
       "date": "2023-09-16",
       "content": "<p>Sample Content</p>",
       "status": "For Edit",
@@ -89,7 +89,7 @@
     },
     {
       "id": "3",
-      "image": "sample-image",
+      "image": "https://i.pinimg.com/280x280_RS/c6/7a/c1/c67ac1a235895869ee92e9cc5d77430c.jpg",
       "title": "Sample Title 3",
       "link": "sample-url",
       "date": "September 14, 2023",
@@ -101,7 +101,7 @@
     },
     {
       "id": "891bb72e-1f15-4efd-8a14-aac643b82df2",
-      "image": "sample image",
+      "image": "https://i.pinimg.com/280x280_RS/c6/7a/c1/c67ac1a235895869ee92e9cc5d77430c.jpg",
       "title": "Warner Bros. Article",
       "link": "sample link",
       "date": "2023-09-15",
@@ -113,7 +113,7 @@
     },
     {
       "id": "904d1cc1-acef-44b3-a1b8-d94a40ddf9e8",
-      "image": "sample",
+      "image": "https://i.pinimg.com/280x280_RS/c6/7a/c1/c67ac1a235895869ee92e9cc5d77430c.jpg",
       "title": "Hello World",
       "link": "sample",
       "date": "2023-09-15",
@@ -125,7 +125,7 @@
     },
     {
       "id": "a2617032-59ad-4ee0-ab33-325e5ab5ebe8",
-      "image": "asd",
+      "image": "https://i.pinimg.com/280x280_RS/c6/7a/c1/c67ac1a235895869ee92e9cc5d77430c.jpg",
       "title": "Hi World",
       "link": "asd",
       "date": "2023-09-15",
