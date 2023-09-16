@@ -1,0 +1,163 @@
+{
+  "company": [
+    {
+      "id": "1",
+      "logo": "sample-logo",
+      "name": "Company AAA",
+      "status": "Inactive"
+    },
+    {
+      "id": "2",
+      "logo": "sample-logo",
+      "name": "Company B",
+      "status": "Active"
+    },
+    {
+      "id": "3",
+      "logo": "sample-logo",
+      "name": "Company C",
+      "status": "Inactive"
+    },
+    {
+      "id": "df86231b-2f30-4acc-8dbc-6af557bb80f9",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Warner_Bros._%282019%29_logo.svg/1200px-Warner_Bros._%282019%29_logo.svg.png",
+      "name": "Warner Bros.",
+      "status": "Active"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "firstname": "John",
+      "lastname": "Doe",
+      "type": "Writer",
+      "status": "Active"
+    },
+    {
+      "id": "2",
+      "firstname": "Sarah",
+      "lastname": "Doe",
+      "type": "Editor",
+      "status": "Active"
+    },
+    {
+      "id": "3",
+      "firstname": "Raymond",
+      "lastname": "Doe",
+      "type": "Writer",
+      "status": "Inactive"
+    },
+    {
+      "id": "1af7d809-d635-475b-92d1-c11992c0a98d",
+      "firstname": "Phil",
+      "lastname": "Doe",
+      "type": "Writer",
+      "status": "Active"
+    },
+    {
+      "id": "7c7cb683-1e69-480f-9fc3-73e38d8ea65d",
+      "firstname": "Jan",
+      "lastname": "Doe",
+      "type": "Editor",
+      "status": "Inactive"
+    }
+  ],
+  "article": [
+    {
+      "id": "1",
+      "image": "sample-image",
+      "title": "Sample Title 1",
+      "link": "sample-url",
+      "date": "September 14, 2023",
+      "content": "Sample Content",
+      "status": "For Edit",
+      "writer": "1",
+      "editor": "2",
+      "company": "2"
+    },
+    {
+      "id": "1",
+      "image": "sample-image",
+      "title": "Sample Title 11",
+      "link": "sample-url",
+      "date": "September 14, 2023",
+      "content": "Sample Content",
+      "status": "For Edit",
+      "writer": "1",
+      "editor": "2",
+      "company": "2"
+    },
+    {
+      "id": "2",
+      "image": "sample-image",
+      "title": "Sample Title 2",
+      "link": "sample-url",
+      "date": "September 14, 2023",
+      "content": "Sample Content",
+      "status": "Published",
+      "writer": "1",
+      "editor": "2",
+      "company": "2"
+    },
+    {
+      "id": "2",
+      "image": "sample-image",
+      "title": "Sample Title 22",
+      "link": "sample-url",
+      "date": "September 14, 2023",
+      "content": "Sample Content",
+      "status": "Published",
+      "writer": "1",
+      "editor": "2",
+      "company": "1"
+    },
+    {
+      "id": "3",
+      "image": "sample-image",
+      "title": "Sample Title 3",
+      "link": "sample-url",
+      "date": "September 14, 2023",
+      "content": "Sample Content",
+      "status": "Published",
+      "writer": "3",
+      "editor": "2",
+      "company": "3"
+    },
+    {
+      "id": "891bb72e-1f15-4efd-8a14-aac643b82df2",
+      "image": "sample image",
+      "title": "Warner Bros. Article",
+      "link": "sample link",
+      "date": "2023-09-15",
+      "content": "<p>asdasd</p>",
+      "status": "For Edit",
+      "writer": "3",
+      "editor": "",
+      "company": "df86231b-2f30-4acc-8dbc-6af557bb80f9"
+    },
+    {
+      "id": "904d1cc1-acef-44b3-a1b8-d94a40ddf9e8",
+      "image": "sample",
+      "title": "Hello World",
+      "link": "sample",
+      "date": "2023-09-15",
+      "content": "<p>content</p>",
+      "status": "For Edit",
+      "writer": "1af7d809-d635-475b-92d1-c11992c0a98d",
+      "editor": "",
+      "company": "df86231b-2f30-4acc-8dbc-6af557bb80f9"
+    },
+    {
+      "id": "a2617032-59ad-4ee0-ab33-325e5ab5ebe8",
+      "image": "asd",
+      "title": "Hi World",
+      "link": "asd",
+      "date": "2023-09-15",
+      "content": "<p>asd</p>",
+      "status": "For Edit",
+      "writer": "1af7d809-d635-475b-92d1-c11992c0a98d",
+      "editor": "",
+      "company": "3"
+    }
+  ]
+}
