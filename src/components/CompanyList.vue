@@ -15,6 +15,7 @@
             :to="{
               name: 'ManageCompany',
               params: {
+                userID: currentUserID,
                 companyID: company.id,
               },
             }"
@@ -29,7 +30,7 @@
 <script>
 import { loadAllCompanies } from "../composables/callApi";
 import { RouterLink, useRoute } from "vue-router";
-import { ref, watch, onMounted } from "vue";
+import { ref, watch, onBeforeMount } from "vue";
 export default {
   data() {
     return {
@@ -38,6 +39,24 @@ export default {
   },
   async mounted() {
     this.companies = await loadAllCompanies();
+  },
+  setup() {
+    const route = useRoute();
+    const currentUserID = ref();
+
+    onBeforeMount(() => {
+      currentUserID.value = route.params.userID;
+      console.log("currentUserID", currentUserID.value);
+    });
+
+    watch(
+      () => route.params,
+      async (newParams) => {
+        currentUserID.value = newParams.userID;
+      }
+    );
+
+    return { currentUserID };
   },
 };
 </script>

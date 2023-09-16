@@ -58,7 +58,6 @@ export default {
       showArticleForm: false,
       showCompanyList: false,
       showUserList: false,
-      atDashboard: true,
     };
   },
   methods: {

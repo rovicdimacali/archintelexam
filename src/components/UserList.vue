@@ -31,7 +31,7 @@
 <script>
 import { loadAllUsers } from "../composables/callApi";
 import { RouterLink, useRoute } from "vue-router";
-import { ref, watch } from "vue";
+import { ref, watch, onBeforeMount } from "vue";
 export default {
   data() {
     return {
@@ -44,6 +44,11 @@ export default {
   setup() {
     const route = useRoute();
     const currentUserID = ref();
+
+    onBeforeMount(() => {
+      currentUserID.value = route.params.userID;
+      console.log("currentUserID", currentUserID.value);
+    });
 
     watch(
       () => route.params.userID,

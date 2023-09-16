@@ -47,6 +47,17 @@ async function loadPublishedArticles() {
   }
 }
 
+async function loadArticle(id) {
+  try {
+    const response = await axios.get("http://localhost:3000/article");
+    const filtedResponse = response.data.filter((article) => article.id === id);
+    return filtedResponse;
+  } catch (error) {
+    console.log("Error loading Article!", error);
+    return [];
+  }
+}
+
 async function loadAllArticles() {
   try {
     const response = await axios.get("http://localhost:3000/article");
@@ -136,11 +147,24 @@ async function updateUser(id, updateUserForm) {
   }
 }
 
+async function updateArticle(id, updateArticleForm) {
+  try {
+    const response = await axios.patch(
+      `http://localhost:3000/article/${id}`,
+      updateArticleForm
+    );
+    return response.data;
+  } catch (error) {
+    console.log("Error updating User", error);
+  }
+}
+
 export {
   loadUser,
   loadAllUsers,
   loadForEditArticles,
   loadPublishedArticles,
+  loadArticle,
   loadAllArticles,
   loadCompany,
   loadAllCompanies,
@@ -149,4 +173,5 @@ export {
   addArticle,
   updateCompany,
   updateUser,
+  updateArticle,
 };

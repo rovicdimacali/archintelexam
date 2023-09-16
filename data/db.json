@@ -66,25 +66,13 @@
     {
       "id": "1",
       "image": "sample-image",
-      "title": "Sample Title 1",
+      "title": "Sample Title 12324",
       "link": "sample-url",
-      "date": "September 14, 2023",
-      "content": "Sample Content",
-      "status": "For Edit",
+      "date": "2023-09-16",
+      "content": "<p>Sample Content</p>",
+      "status": "Published",
       "writer": "1",
-      "editor": "2",
-      "company": "2"
-    },
-    {
-      "id": "1",
-      "image": "sample-image",
-      "title": "Sample Title 11",
-      "link": "sample-url",
-      "date": "September 14, 2023",
-      "content": "Sample Content",
-      "status": "For Edit",
-      "writer": "1",
-      "editor": "2",
+      "editor": "",
       "company": "2"
     },
     {
@@ -92,24 +80,12 @@
       "image": "sample-image",
       "title": "Sample Title 2",
       "link": "sample-url",
-      "date": "September 14, 2023",
-      "content": "Sample Content",
-      "status": "Published",
+      "date": "2023-09-16",
+      "content": "<p>Sample Content</p>",
+      "status": "For Edit",
       "writer": "1",
       "editor": "2",
       "company": "2"
-    },
-    {
-      "id": "2",
-      "image": "sample-image",
-      "title": "Sample Title 22",
-      "link": "sample-url",
-      "date": "September 14, 2023",
-      "content": "Sample Content",
-      "status": "Published",
-      "writer": "1",
-      "editor": "2",
-      "company": "1"
     },
     {
       "id": "3",

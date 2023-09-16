@@ -96,7 +96,6 @@ export default {
   },
   async mounted() {
     this.companies = await loadAllCompanies();
-    console.log(this.companies);
   },
 };
 </script>

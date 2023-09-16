@@ -46,7 +46,7 @@
 import { loadCompany, updateCompany } from "../composables/callApi";
 import { useRouter, useRoute } from "vue-router";
 export default {
-  props: ["companyID"],
+  props: ["userID", "companyID"],
   data() {
     return {
       fetchedCompany: [],
@@ -64,6 +64,7 @@ export default {
   },
   async mounted() {
     this.fetchedCompany = await loadCompany(this.companyID);
+    console.log("userID", this.userID);
   },
   setup() {
     const router = useRouter();

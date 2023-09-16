@@ -33,7 +33,18 @@
       </thead>
       <tbody>
         <tr v-for="article in articles" :key="article.id">
-          <th>Update</th>
+          <th>
+            <RouterLink
+              :to="{
+                name: 'ManageArticle',
+                params: {
+                  userID: currentUserID,
+                  articleID: article.id,
+                },
+              }"
+              >Update</RouterLink
+            >
+          </th>
           <th>{{ article.image }}</th>
           <th>{{ article.title }}</th>
           <th>{{ article.link }}</th>
@@ -57,7 +68,7 @@ import {
   loadUser,
 } from "../composables/callApi";
 import { ref, watch, onBeforeMount } from "vue";
-import { useRoute } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
 export default {
   components: { UserForm, CompanyForm, ArticleForm },
   data() {
@@ -91,8 +102,10 @@ export default {
     const articles = ref([]);
     const userType = ref({ type: "" });
     const users = ref([]);
+    const currentUserID = ref();
 
     onBeforeMount(async () => {
+      currentUserID.value = route.params.userID;
       articles.value = await loadAllArticles();
       users.value = await loadAllUsers();
       userType.value = await loadUser(route.params.userID);
@@ -115,6 +128,7 @@ export default {
         users.value = await loadAllUsers();
         userType.value = await loadUser(route.params.userID);
         userType.value = userType.value[0].type;
+        currentUserID.value = newParams.userID;
       }
     );
 
@@ -123,7 +137,7 @@ export default {
       return user ? `${user.firstname} ${user.lastname}` : "";
     };
 
-    return { articles, userType, getUserName };
+    return { articles, userType, getUserName, currentUserID };
   },
 };
 </script>

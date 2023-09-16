@@ -1,6 +1,8 @@
 <template>
-  <Navigation />
-  <RouterView />
+  <div class="row">
+    <Navigation />
+    <RouterView />
+  </div>
 </template>
 
 <script>

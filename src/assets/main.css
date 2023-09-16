@@ -1,6 +1,101 @@
-@import "./base.css";
+@import url("https://fonts.cdnfonts.com/css/poppins");
+@import url("https://fonts.cdnfonts.com/css/bebas-neue");
+nav {
+  height: 100vh;
+  width: 200px;
+  background: #005f9a;
+  color: white;
+}
+nav .title-box {
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-align: center;
+}
+nav .current-user {
+  margin-top: 10px;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #3d82ad;
+  border-bottom: 1px solid #3d82ad;
+  padding: 10px;
+  cursor: pointer;
+}
+nav .current-user img {
+  width: 40px;
+  height: 40px;
+}
+nav .current-user p {
+  margin: 0;
+  margin-left: 10px;
+}
+nav .user-box {
+  justify-content: center;
+  align-items: center;
+  height: 0;
+  overflow: hidden;
+  background: white;
+  border-right: 1px solid #005f9a;
+  color: #005f9a;
+}
+nav .user-box .user-list {
+  transition: 0.5s all;
+  text-align: center;
+  width: 100%;
+  font-family: "Poppins";
+  font-size: 13px;
+  padding: 10px;
+  cursor: pointer;
+}
+nav .user-box .user-list:hover {
+  background: #005f9a;
+  color: white;
+}
+nav .user-box:hover {
+  transition: 0.5s all;
+  height: auto;
+}
+nav .current-user:hover + .user-box {
+  transition: 0.5s all;
+  height: auto;
+}
+nav .links-box {
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+nav .links-box a {
+  transition: 0.5s all;
+  padding: 10px;
+  width: 100%;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  color: white;
+}
+nav .links-box a.active {
+  background: #3d82ad;
+}
+nav .links-box a:hover {
+  background: #3d82ad;
+}
 
-#app {
+body {
   margin: 0;
   padding: 0;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=main.css.map */
