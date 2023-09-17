@@ -2,7 +2,9 @@ import axios from "axios";
 
 async function loadAllUsers() {
   try {
-    const response = await axios.get("http://localhost:3000/users");
+    const response = await axios.get(
+      "https://archintel-exam-mock-api.onrender.com/users"
+    );
     return response.data;
   } catch (error) {
     console.log("Error loading users!", error);
@@ -12,7 +14,9 @@ async function loadAllUsers() {
 
 async function loadUser(id) {
   try {
-    const response = await axios.get("http://localhost:3000/users");
+    const response = await axios.get(
+      "https://archintel-exam-mock-api.onrender.com/users"
+    );
     const filtedResponse = response.data.filter((user) => user.id === id);
     return filtedResponse;
   } catch (error) {
@@ -23,7 +27,9 @@ async function loadUser(id) {
 
 async function loadForEditArticles() {
   try {
-    const response = await axios.get("http://localhost:3000/article");
+    const response = await axios.get(
+      "https://archintel-exam-mock-api.onrender.com/article"
+    );
     const filtedResponse = response.data.filter(
       (article) => article.status === "For Edit"
     );
@@ -36,7 +42,9 @@ async function loadForEditArticles() {
 
 async function loadPublishedArticles() {
   try {
-    const response = await axios.get("http://localhost:3000/article");
+    const response = await axios.get(
+      "https://archintel-exam-mock-api.onrender.com/article"
+    );
     const filtedResponse = response.data.filter(
       (article) => article.status === "Published"
     );
@@ -49,7 +57,9 @@ async function loadPublishedArticles() {
 
 async function loadArticle(id) {
   try {
-    const response = await axios.get("http://localhost:3000/article");
+    const response = await axios.get(
+      "https://archintel-exam-mock-api.onrender.com/article"
+    );
     const filtedResponse = response.data.filter((article) => article.id === id);
     return filtedResponse;
   } catch (error) {
@@ -60,7 +70,9 @@ async function loadArticle(id) {
 
 async function loadAllArticles() {
   try {
-    const response = await axios.get("http://localhost:3000/article");
+    const response = await axios.get(
+      "https://archintel-exam-mock-api.onrender.com/article"
+    );
     return response.data;
     return filtedResponse;
   } catch (error) {
@@ -71,7 +83,9 @@ async function loadAllArticles() {
 
 async function loadCompany(id) {
   try {
-    const response = await axios.get("http://localhost:3000/company");
+    const response = await axios.get(
+      "https://archintel-exam-mock-api.onrender.com/company"
+    );
     const filtedResponse = response.data.filter((company) => company.id === id);
     return filtedResponse;
   } catch (error) {
@@ -82,7 +96,9 @@ async function loadCompany(id) {
 
 async function loadAllCompanies() {
   try {
-    const response = await axios.get("http://localhost:3000/company");
+    const response = await axios.get(
+      "https://archintel-exam-mock-api.onrender.com/company"
+    );
     return response.data;
   } catch (error) {
     console.log("Error loading All Companies!", error);
@@ -92,7 +108,10 @@ async function loadAllCompanies() {
 
 async function addUser(newUser) {
   try {
-    const response = await axios.post(`http://localhost:3000/users`, newUser);
+    const response = await axios.post(
+      `https://archintel-exam-mock-api.onrender.com/users`,
+      newUser
+    );
     return response.data;
   } catch (error) {
     console.log("Error Adding User", error);
@@ -102,7 +121,7 @@ async function addUser(newUser) {
 async function addCompany(newCompany) {
   try {
     const response = await axios.post(
-      "http://localhost:3000/company",
+      "https://archintel-exam-mock-api.onrender.com/company",
       newCompany
     );
     return response.data;
@@ -114,7 +133,7 @@ async function addCompany(newCompany) {
 async function addArticle(newArticle) {
   try {
     const response = await axios.post(
-      "http://localhost:3000/article",
+      "https://archintel-exam-mock-api.onrender.com/article",
       newArticle
     );
     return response.data;
@@ -126,7 +145,7 @@ async function addArticle(newArticle) {
 async function updateCompany(id, updateCompanyForm) {
   try {
     const response = await axios.patch(
-      `http://localhost:3000/company/${id}`,
+      `https://archintel-exam-mock-api.onrender.com/company/${id}`,
       updateCompanyForm
     );
     return response.data;
@@ -138,7 +157,7 @@ async function updateCompany(id, updateCompanyForm) {
 async function updateUser(id, updateUserForm) {
   try {
     const response = await axios.patch(
-      `http://localhost:3000/users/${id}`,
+      `https://archintel-exam-mock-api.onrender.com/users/${id}`,
       updateUserForm
     );
     return response.data;
@@ -150,7 +169,7 @@ async function updateUser(id, updateUserForm) {
 async function updateArticle(id, updateArticleForm) {
   try {
     const response = await axios.patch(
-      `http://localhost:3000/article/${id}`,
+      `https://archintel-exam-mock-api.onrender.com/article/${id}`,
       updateArticleForm
     );
     return response.data;
