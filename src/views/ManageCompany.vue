@@ -1,45 +1,49 @@
 <template>
-  <form
-    @submit.prevent="updateCurrentCompany"
-    v-for="company in fetchedCompany"
-    :key="company.id"
-  >
-    <label for="logo">Logo URL</label>
-    <input type="text" id="logo" v-model="company.logo" required />
-    <label for="name">Name</label>
-    <input type="text" id="name" v-model="company.name" required />
-    <label for="type">Status</label>
-    <div>
-      <input
-        type="radio"
-        id="active"
-        value="Active"
-        v-model="company.status"
-        required
-      />
-      <label for="writer">Active</label>
-      <input
-        type="radio"
-        id="inactive"
-        value="Inactive"
-        v-model="company.status"
-      />
-      <label for="editor">Inactive</label>
+  <div class="manage-company">
+    <div class="form-container">
+      <form
+        @submit.prevent="updateCurrentCompany"
+        v-for="company in fetchedCompany"
+        :key="company.id"
+      >
+        <div class="row">
+          <label for="logo">Logo URL</label>
+          <input type="text" id="logo" v-model="company.logo" required />
+        </div>
+        <div class="row">
+          <label for="name">Name</label>
+          <input type="text" id="name" v-model="company.name" required />
+        </div>
+        <div class="row">
+          <label for="type">Status</label>
+          <div>
+            <input
+              type="radio"
+              id="active"
+              value="Active"
+              v-model="company.status"
+              required
+            />
+            <label for="writer">Active</label>
+            <input
+              type="radio"
+              id="inactive"
+              value="Inactive"
+              v-model="company.status"
+            />
+            <label for="editor">Inactive</label>
+          </div>
+        </div>
+        <p v-if="showValidationError">
+          Please Complete the form before submitting!
+        </p>
+        <div class="action-btn">
+          <button @click="backToDashboard">Cancel</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
     </div>
-    <p v-if="showValidationError">
-      Please Complete the form before submitting!
-    </p>
-    <button
-      @click="
-        () => {
-          this.$emit('close');
-        }
-      "
-    >
-      Cancel
-    </button>
-    <button type="submit">Submit</button>
-  </form>
+  </div>
 </template>
 
 <script>

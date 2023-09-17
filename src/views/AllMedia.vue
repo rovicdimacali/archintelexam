@@ -4,37 +4,132 @@
   <ArticleForm v-if="showArticleForm" @close="toggleArticleForm" />
   <CompanyList v-if="showCompanyList" @close="toggleCompanyList" />
   <UserList v-if="showUserList" @close="toggleUserList" />
-  <h1>All Media</h1>
-  <button v-if="userType === 'Editor'" @click="toggleUserForm">Add User</button>
-  <button v-if="userType === 'Editor'" @click="toggleCompanyForm">
-    Add Company
-  </button>
-  <button v-if="userType === 'Editor'" @click="toggleCompanyList">
-    Manage Company
-  </button>
-  <button v-if="userType === 'Editor'" @click="toggleUserList">
-    Manage User
-  </button>
-  <button v-if="userType === 'Writer'" @click="toggleArticleForm">
-    Create Article
-  </button>
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Action</th>
-          <th>Image</th>
-          <th>Title</th>
-          <th>Link</th>
-          <th>Writer</th>
-          <th>Editor</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="article in articles" :key="article.id">
-          <th>
+  <div class="all-media">
+    <h1 class="title">All Media</h1>
+    <div class="all-media-actions">
+      <button v-if="userType === 'Editor'" @click="toggleUserForm">
+        Add User
+      </button>
+      <button v-if="userType === 'Editor'" @click="toggleCompanyForm">
+        Add Company
+      </button>
+      <button v-if="userType === 'Editor'" @click="toggleCompanyList">
+        Manage Company
+      </button>
+      <button v-if="userType === 'Editor'" @click="toggleUserList">
+        Manage User
+      </button>
+      <button v-if="userType === 'Writer'" @click="toggleArticleForm">
+        Create Article
+      </button>
+    </div>
+    <input
+      class="search-input"
+      type="text"
+      v-model="searchQuery"
+      placeholder="Search by title"
+    />
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Link</th>
+            <th>Writer</th>
+            <th>Editor</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="article in filteredArticles" :key="article.id">
+            <th>
+              <RouterLink
+                v-if="article.status === 'For Edit'"
+                :to="{
+                  name: 'ManageArticle',
+                  params: {
+                    userID: currentUserID,
+                    articleID: article.id,
+                  },
+                }"
+                >Update</RouterLink
+              >
+              <button v-if="article.status === 'Published'" disabled>
+                Update
+              </button>
+            </th>
+            <th>
+              <img :src="article.image" alt="article_image" />
+            </th>
+            <th>{{ article.title }}</th>
+            <th>
+              <a
+                class="article-link"
+                style="word-break: break-all"
+                :href="article.link"
+                target="_blank"
+              >
+                {{ article.link }}
+              </a>
+            </th>
+            <th>{{ getUserName(article.writer) }}</th>
+            <th>{{ getUserName(article.editor) }}</th>
+            <th>{{ article.status }}</th>
+          </tr>
+          <tr v-if="filteredArticles.length === 0">
+            <th>No Data Found</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mobile-container">
+      <div
+        v-for="article in filteredArticles"
+        :key="article.id"
+        class="mobile-list"
+      >
+        <div class="header row">
+          <div class="subtitle">Title:</div>
+          <div class="content">
+            {{ article.title }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="image-content">
+            <img :src="article.image" alt="article-image" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="subtitle">Link:</div>
+          <div class="content">
+            <a :href="article.link">Click this Link</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="subtitle">Writer:</div>
+          <div class="content">
+            {{ getUserName(article.writer) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="subtitle">Editor:</div>
+          <div class="content">
+            {{ getUserName(article.editor) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="subtitle">Status:</div>
+          <div class="content">
+            {{ article.status }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="action">
             <RouterLink
+              v-if="article.status === 'For Edit'"
               :to="{
                 name: 'ManageArticle',
                 params: {
@@ -44,16 +139,14 @@
               }"
               >Update</RouterLink
             >
-          </th>
-          <th>{{ article.image }}</th>
-          <th>{{ article.title }}</th>
-          <th>{{ article.link }}</th>
-          <th>{{ getUserName(article.writer) }}</th>
-          <th>{{ getUserName(article.editor) }}</th>
-          <th>{{ article.status }}</th>
-        </tr>
-      </tbody>
-    </table>
+            <button v-if="article.status === 'Published'" disabled>
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+      <p v-if="filteredArticles.length === 0">No Data Found</p>
+    </div>
   </div>
 </template>
 
@@ -78,6 +171,7 @@ export default {
       showArticleForm: false,
       showCompanyList: false,
       showUserList: false,
+      searchQuery: "",
     };
   },
   methods: {
@@ -110,8 +204,6 @@ export default {
       users.value = await loadAllUsers();
       userType.value = await loadUser(route.params.userID);
       userType.value = userType.value[0].type;
-
-      console.log("users", users.value);
     });
 
     watch(
@@ -138,6 +230,17 @@ export default {
     };
 
     return { articles, userType, getUserName, currentUserID };
+  },
+  computed: {
+    filteredArticles() {
+      if (this.searchQuery) {
+        return this.articles.filter((article) =>
+          article.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
+      } else {
+        return this.articles;
+      }
+    },
   },
 };
 </script>

@@ -5,23 +5,28 @@
         this.$emit('close');
       }
     "
-    class="overlay"
+    class="overlay user-list"
   >
-    <div class="form-container">
+    <div class="list-container">
+      <h1>User List</h1>
       <ul>
-        <li v-for="user in users" :key="user.id">
-          {{ user.firstname }}
-          {{ user.lastname }}
-          <RouterLink
-            :to="{
-              name: 'ManageUser',
-              params: {
-                userID: currentUserID,
-                userIdToUpdate: user.id,
-              },
-            }"
-            >Update</RouterLink
-          >
+        <li class="list row" v-for="user in users" :key="user.id">
+          <div class="user-name">
+            {{ user.firstname }}
+            {{ user.lastname }}
+          </div>
+          <div class="update-link">
+            <RouterLink
+              :to="{
+                name: 'ManageUser',
+                params: {
+                  userID: currentUserID,
+                  userIdToUpdate: user.id,
+                },
+              }"
+              >Update</RouterLink
+            >
+          </div>
         </li>
       </ul>
     </div>

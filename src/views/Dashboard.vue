@@ -6,7 +6,7 @@
   <UserList v-if="showUserList" @close="toggleUserList" />
   <div class="dashboard">
     <h1 class="title">Dashboard</h1>
-    <div class="dashboard-actions row">
+    <div class="dashboard-actions">
       <button v-if="userType === 'Editor'" @click="toggleUserForm">
         Add User
       </button>
@@ -23,7 +23,11 @@
         Create Article
       </button>
     </div>
-    <div class="dashboard-articles row">
+    <div class="dashboard-articles">
+      <div class="dashboard-status">
+        <h1 v-if="userType === 'Writer'">For Edit</h1>
+        <h1 v-if="userType === 'Editor'">For Publish</h1>
+      </div>
       <div class="edit-articles">
         <ul>
           <li
@@ -39,7 +43,9 @@
                   {{ forEditArticle.title }}
                 </div>
                 <div class="link-container">
-                  <a :href="forEditArticle.link">{{ forEditArticle.link }}</a>
+                  <a :href="forEditArticle.link" target="blank">
+                    Click here for the link</a
+                  >
                 </div>
                 <div class="date-container">
                   {{ forEditArticle.date }}
@@ -54,12 +60,18 @@
                   Edited by: {{ getUserName(forEditArticle.editor) }}
                 </div>
               </div>
-              <div class="status-badge">
+              <div v-if="userType === 'Writer'" class="status-badge">
                 {{ forEditArticle.status }}
+              </div>
+              <div v-if="userType === 'Editor'" class="status-badge">
+                For Publish
               </div>
             </div>
           </li>
         </ul>
+      </div>
+      <div class="dashboard-status">
+        <h1>Published</h1>
       </div>
       <div class="publish-articles">
         <ul>
@@ -76,9 +88,9 @@
                   {{ publishedArticle.title }}
                 </div>
                 <div class="link-container">
-                  <a :href="publishedArticle.link">{{
-                    publishedArticle.link
-                  }}</a>
+                  <a :href="publishedArticle.link" target="_blank"
+                    >Click here for the link</a
+                  >
                 </div>
                 <div class="date-container">
                   {{ publishedArticle.date }}
@@ -128,6 +140,7 @@ export default {
       showArticleForm: false,
       showCompanyList: false,
       showUserList: false,
+      isActive: false,
     };
   },
   methods: {

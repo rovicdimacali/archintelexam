@@ -8,6 +8,21 @@ nav {
   position: sticky;
   top: 0;
 
+  @include lg-phone {
+    position: fixed;
+    z-index: 3;
+  }
+
+  @include m-phone {
+    position: fixed;
+    z-index: 3;
+  }
+
+  @include sm-phone {
+    position: fixed;
+    z-index: 3;
+  }
+
   .title-box {
     font-size: 15px;
     font-family: "Warownia", sans-serif;
@@ -66,13 +81,7 @@ nav {
       color: white;
     }
   }
-
-  .user-box:hover {
-    transition: 0.5s all;
-    height: auto;
-  }
-
-  .current-user:hover + .user-box {
+  .user-box.isActive {
     transition: 0.5s all;
     height: auto;
   }
@@ -118,6 +127,7 @@ header {
   color: white;
   align-items: center;
   transition: 0.3s all;
+  z-index: 1;
 
   .bars {
     font-size: 20px;

@@ -1,0 +1,124 @@
+.overlay.user-form {
+  top: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+
+  .form-container {
+    width: 800px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    transition: 0.3s all;
+
+    @include tablet {
+      width: 600px;
+    }
+
+    @include lg-phone {
+      width: 400px;
+    }
+
+    @include m-phone {
+      width: 280px;
+    }
+
+    @include sm-phone {
+      width: 280px;
+    }
+
+    input[type="text"] {
+      padding: 5px 10px;
+      font-size: 20px;
+    }
+
+    label {
+      font-family: "Poppins", sans-serif;
+      margin-right: 10px;
+      font-size: 20px;
+    }
+
+    .name-container {
+      @include lg-phone {
+        flex-direction: column;
+      }
+
+      @include m-phone {
+        flex-direction: column;
+      }
+
+      @include sm-phone {
+        flex-direction: column;
+      }
+    }
+
+    .name-container,
+    .type-container {
+      width: 100%;
+      margin-bottom: 10px;
+
+      .firstname-container,
+      .lastname-container {
+        flex: 0 0 50%;
+
+        label {
+          margin-right: 10px;
+        }
+
+        input {
+          width: calc(100% - 150px);
+        }
+
+        @include lg-phone {
+          margin-bottom: 10px;
+        }
+
+        @include m-phone {
+          margin-bottom: 10px;
+        }
+
+        @include sm-phone {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .form-error {
+      color: red;
+      font-family: "Poppins";
+    }
+
+    .action-buttons {
+      margin-top: 10px;
+      width: 100%;
+      justify-content: flex-end;
+
+      button {
+        padding: 10px 15px;
+        background: #005f9a;
+        color: white;
+        border-radius: 5px;
+        border: 1px solid #005f9a;
+        font-family: "POppins", sans-serif;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s all;
+      }
+
+      button:hover {
+        background: white;
+        color: #005f9a;
+      }
+
+      button:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}

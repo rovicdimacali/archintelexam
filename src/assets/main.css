@@ -12,6 +12,24 @@ nav {
   position: sticky;
   top: 0;
 }
+@media (max-width: 768px) and (min-width: 550px) {
+  nav {
+    position: fixed;
+    z-index: 3;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  nav {
+    position: fixed;
+    z-index: 3;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  nav {
+    position: fixed;
+    z-index: 3;
+  }
+}
 nav .title-box {
   font-size: 15px;
   font-family: "Warownia", sans-serif;
@@ -64,11 +82,7 @@ nav .user-box .user-list:hover {
   background: #005f9a;
   color: white;
 }
-nav .user-box:hover {
-  transition: 0.5s all;
-  height: auto;
-}
-nav .current-user:hover + .user-box {
+nav .user-box.isActive {
   transition: 0.5s all;
   height: auto;
 }
@@ -109,6 +123,7 @@ header {
   color: white;
   align-items: center;
   transition: 0.3s all;
+  z-index: 1;
 }
 header .bars {
   font-size: 20px;
@@ -139,6 +154,7 @@ header.toggled {
   margin-top: 50px;
   margin-left: 30px;
   width: 100%;
+  overflow-x: hidden;
 }
 .dashboard .title {
   font-family: "Bebas Neue", sans-serif;
@@ -150,8 +166,9 @@ header.toggled {
   align-items: center;
   margin-top: 10px;
   margin-bottom: 20px;
-  width: 600px;
   justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .dashboard .dashboard-actions button {
   background: #005f9a;
@@ -163,6 +180,8 @@ header.toggled {
   color: white;
   border-radius: 5px;
   transition: 0.3s all;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 .dashboard .dashboard-actions button:hover {
   background: white;
@@ -170,10 +189,72 @@ header.toggled {
 }
 .dashboard .dashboard-articles {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.dashboard .dashboard-articles .dashboard-status {
+  display: none;
+}
+.dashboard .dashboard-articles .dashboard-status h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  width: 150px;
+  text-align: center;
+  margin: 0;
+  background-color: #005f9a;
+  color: white;
+  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .dashboard .dashboard-articles .dashboard-status {
+    display: block;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .dashboard .dashboard-articles .dashboard-status {
+    display: block;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .dashboard .dashboard-articles .dashboard-status {
+    display: block;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .dashboard .dashboard-articles .dashboard-status {
+    display: block;
+  }
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .dashboard .dashboard-articles {
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .dashboard .dashboard-articles {
+    flex-direction: column;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .dashboard .dashboard-articles {
+    flex-direction: column;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .dashboard .dashboard-articles {
+    flex-direction: column;
+  }
+}
+.dashboard .dashboard-articles ul {
+  padding: 0;
+  margin-left: 20px;
 }
 .dashboard .dashboard-articles .edit-articles,
 .dashboard .dashboard-articles .publish-articles {
-  flex: 0 0 50%;
+  flex: 0 0 48.5%;
+  margin-right: 20px;
 }
 .dashboard .dashboard-articles .edit-articles li,
 .dashboard .dashboard-articles .publish-articles li {
@@ -181,14 +262,18 @@ header.toggled {
 }
 .dashboard .dashboard-articles .edit-articles li .article-list,
 .dashboard .dashboard-articles .publish-articles li .article-list {
+  max-width: 800px;
   position: relative;
   align-items: center;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
-  margin-right: 20px;
-  transition: 0.3s all;
+  min-width: none;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: 0.3s all;
 }
 .dashboard .dashboard-articles .edit-articles li .article-list .image-container img,
 .dashboard .dashboard-articles .publish-articles li .article-list .image-container img {
@@ -197,25 +282,85 @@ header.toggled {
   height: 140px;
   width: 140px;
 }
+@media (max-width: 550px) and (min-width: 360px) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .image-container img,
+  .dashboard .dashboard-articles .publish-articles li .article-list .image-container img {
+    height: 100px;
+    width: 100px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .image-container img,
+  .dashboard .dashboard-articles .publish-articles li .article-list .image-container img {
+    height: 100px;
+    width: 100px;
+  }
+}
 .dashboard .dashboard-articles .edit-articles li .article-list .info-container,
 .dashboard .dashboard-articles .publish-articles li .article-list .info-container {
   margin-left: 20px;
+  padding-right: 20px;
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container {
+    margin-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container {
+    margin-left: 10px;
+    padding-right: 10px;
+  }
 }
 .dashboard .dashboard-articles .edit-articles li .article-list .info-container .title-container,
 .dashboard .dashboard-articles .publish-articles li .article-list .info-container .title-container {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .title-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .title-container {
+    font-size: 12px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .title-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .title-container {
+    font-size: 12px;
+  }
 }
 .dashboard .dashboard-articles .edit-articles li .article-list .info-container .link-container a,
 .dashboard .dashboard-articles .publish-articles li .article-list .info-container .link-container a {
+  padding-right: 20px;
   font-family: "Poppins", sans-serif;
   text-decoration: none;
   color: #005f9a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .dashboard .dashboard-articles .edit-articles li .article-list .info-container .link-container a:hover,
 .dashboard .dashboard-articles .publish-articles li .article-list .info-container .link-container a:hover {
   text-decoration: underline;
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .link-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .link-container {
+    font-size: 12px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .link-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .link-container {
+    font-size: 12px;
+  }
 }
 .dashboard .dashboard-articles .edit-articles li .article-list .info-container .date-container,
 .dashboard .dashboard-articles .edit-articles li .article-list .info-container .writer-container,
@@ -224,6 +369,26 @@ header.toggled {
 .dashboard .dashboard-articles .publish-articles li .article-list .info-container .writer-container,
 .dashboard .dashboard-articles .publish-articles li .article-list .info-container .editor-container {
   font-family: "Poppins", sans-serif;
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .date-container,
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .writer-container,
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .editor-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .date-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .writer-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .editor-container {
+    font-size: 12px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .date-container,
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .writer-container,
+  .dashboard .dashboard-articles .edit-articles li .article-list .info-container .editor-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .date-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .writer-container,
+  .dashboard .dashboard-articles .publish-articles li .article-list .info-container .editor-container {
+    font-size: 12px;
+  }
 }
 .dashboard .dashboard-articles .edit-articles li .article-list .status-badge,
 .dashboard .dashboard-articles .publish-articles li .article-list .status-badge {
@@ -237,6 +402,24 @@ header.toggled {
   padding: 5px 10px;
   border-radius: 5px;
   transition: 0.3s all;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .status-badge,
+  .dashboard .dashboard-articles .publish-articles li .article-list .status-badge {
+    display: none;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .status-badge,
+  .dashboard .dashboard-articles .publish-articles li .article-list .status-badge {
+    display: none;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .dashboard .dashboard-articles .edit-articles li .article-list .status-badge,
+  .dashboard .dashboard-articles .publish-articles li .article-list .status-badge {
+    display: none;
+  }
 }
 .dashboard .dashboard-articles .edit-articles li .article-list:hover,
 .dashboard .dashboard-articles .publish-articles li .article-list:hover {
@@ -252,8 +435,1335 @@ header.toggled {
   background: white;
   color: #005f9a;
 }
-.dashboard .dashboard-articles .publish-articles {
+
+.all-media {
+  margin-top: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
+  width: 100%;
+  overflow-x: hidden;
+}
+.all-media .title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 50px;
+  margin: 0;
+  margin-top: 20px;
+}
+.all-media .all-media-actions {
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.all-media .all-media-actions button {
+  background: #005f9a;
+  border: 1px solid #005f9a;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: white;
+  border-radius: 5px;
+  transition: 0.3s all;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+.all-media .all-media-actions button:hover {
+  background: white;
+  color: #005f9a;
+}
+.all-media .search-input {
+  padding: 10px 15px;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  margin-bottom: 10px;
+}
+.all-media .table-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .all-media .table-container {
+    display: none;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .all-media .table-container {
+    display: none;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .all-media .table-container {
+    display: none;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .all-media .table-container {
+    display: none;
+  }
+}
+.all-media .table-container table {
+  border: 1px solid #005f9a;
+  border-collapse: collapse;
+  margin-bottom: 50px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.5s all;
+}
+.all-media .table-container table thead {
+  background: #005f9a;
+  color: white;
+}
+.all-media .table-container table thead th {
+  padding: 20px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.all-media .table-container table tbody th {
+  padding: 20px;
+  font-family: "Popins", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+.all-media .table-container table tbody th a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  background: #005f9a;
+  color: white;
+  text-decoration: none;
+  border: 1px solid #005f9a;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.3s all;
+}
+.all-media .table-container table tbody th a:hover {
+  background: white;
+  color: #005f9a;
+}
+.all-media .table-container table tbody th .article-link {
+  background: none;
+  color: #005f9a;
+  border: none;
+}
+.all-media .table-container table tbody th .article-link:hover {
+  text-decoration: underline;
+}
+.all-media .table-container table tbody th button:disabled {
+  font-family: "Poppins", sans-serif;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: not-allowed;
+}
+.all-media .table-container table tbody th img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 140px;
+  width: 140px;
+  transition: 0.3s all;
+}
+.all-media .mobile-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 50px;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .all-media .mobile-container {
+    display: flex;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .all-media .mobile-container {
+    display: flex;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .all-media .mobile-container {
+    display: flex;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .all-media .mobile-container {
+    display: flex;
+  }
+}
+.all-media .mobile-container .mobile-list {
+  width: 100%;
+}
+.all-media .mobile-container .mobile-list .header {
+  background: #005f9a;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+.all-media .mobile-container .mobile-list .row {
+  border-top: 1px solid #005f9a;
+  border-bottom: 1px solid #005f9a;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.all-media .mobile-container .mobile-list .row .subtitle {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.all-media .mobile-container .mobile-list .row .content {
+  margin-right: 20px;
+}
+.all-media .mobile-container .mobile-list .row .image-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.all-media .mobile-container .mobile-list .row .image-content img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 300px;
+  height: 300x;
+}
+.all-media .mobile-container .mobile-list .row .action {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.all-media .mobile-container .mobile-list .row .action a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  background: #005f9a;
+  color: white;
+  text-decoration: none;
+  border: 1px solid #005f9a;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.3s all;
+}
+.all-media .mobile-container .mobile-list .row .action a:hover {
+  background: white;
+  color: #005f9a;
+}
+.all-media .mobile-container .mobile-list .row .action button:disabled {
+  font-family: "Poppins", sans-serif;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: not-allowed;
+}
+
+.overlay.article-form {
+  top: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+.overlay.article-form .form-container {
+  width: 800px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  transition: 0.3s all;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .overlay.article-form .form-container {
+    width: 600px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container {
+    width: 400px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container {
+    width: 300px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container {
+    width: 300px;
+  }
+}
+.overlay.article-form .form-container form input[type=text] {
+  padding: 5px 10px;
+  font-size: 20px;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form input[type=text] {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form input[type=text] {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form input[type=text] {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
+}
+.overlay.article-form .form-container form label {
+  font-family: "Poppins", sans-serif;
+  margin-right: 10px;
+  font-size: 20px;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form label {
+    font-size: 15px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form label {
+    font-size: 15px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form label {
+    font-size: 15px;
+  }
+}
+.overlay.article-form .form-container form .company-title {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .company-title {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .company-title {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .company-title {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .company-title .company-container {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .company-title .company-container {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .company-title .company-container {
+    margin-bottom: 10px;
+  }
+}
+.overlay.article-form .form-container form .company-title .company-container,
+.overlay.article-form .form-container form .company-title .title-container {
   flex: 0 0 50%;
+  align-items: center;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .company-title .company-container,
+  .overlay.article-form .form-container form .company-title .title-container {
+    width: 100%;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .company-title .company-container,
+  .overlay.article-form .form-container form .company-title .title-container {
+    width: 100%;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .company-title .company-container,
+  .overlay.article-form .form-container form .company-title .title-container {
+    width: 100%;
+  }
+}
+.overlay.article-form .form-container form .company-title .company-container select,
+.overlay.article-form .form-container form .company-title .title-container select {
+  width: 100%;
+  margin-right: 20px;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .company-title .company-container select,
+  .overlay.article-form .form-container form .company-title .title-container select {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .company-title .company-container select,
+  .overlay.article-form .form-container form .company-title .title-container select {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .company-title .company-container select,
+  .overlay.article-form .form-container form .company-title .title-container select {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
+}
+.overlay.article-form .form-container form .company-title .company-container input,
+.overlay.article-form .form-container form .company-title .title-container input {
+  width: 100%;
+}
+.overlay.article-form .form-container form .image-link-container {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .image-link-container {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .image-link-container {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .image-link-container {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .image-link-container .image-container {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .image-link-container .image-container {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .image-link-container .image-container {
+    margin-bottom: 10px;
+  }
+}
+.overlay.article-form .form-container form .image-link-container .image-container,
+.overlay.article-form .form-container form .image-link-container .link-container {
+  flex: 0 0 50%;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .image-link-container .image-container,
+  .overlay.article-form .form-container form .image-link-container .link-container {
+    width: 100%;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .image-link-container .image-container,
+  .overlay.article-form .form-container form .image-link-container .link-container {
+    width: 100%;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .image-link-container .image-container,
+  .overlay.article-form .form-container form .image-link-container .link-container {
+    width: 100%;
+  }
+}
+.overlay.article-form .form-container form .image-link-container .image-container input,
+.overlay.article-form .form-container form .image-link-container .link-container input {
+  width: 100%;
+}
+.overlay.article-form .form-container form .image-link-container .image-container input {
+  margin-right: 20px;
+  width: calc(100% - 160px);
+}
+.overlay.article-form .form-container form .date-container {
+  margin-bottom: 20px;
+}
+.overlay.article-form .form-container form .date-container input {
+  padding: 5px 10px;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .date-container input {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .date-container input {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .date-container input {
+    padding: 0px 5px;
+    font-size: 15px;
+  }
+}
+.overlay.article-form .form-container form .content-container {
+  margin-bottom: 20px;
+}
+.overlay.article-form .form-container form .content-container .ql-editor {
+  height: 200px;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .content-container .ql-editor {
+    height: 100px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .content-container .ql-editor {
+    height: 100px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .content-container .ql-editor {
+    height: 100px;
+  }
+}
+.overlay.article-form .form-container form .form-error {
+  color: red;
+  font-family: "Poppins";
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.article-form .form-container form .form-error {
+    margin: 0;
+    font-size: 15px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.article-form .form-container form .form-error {
+    margin: 0;
+    font-size: 15px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.article-form .form-container form .form-error {
+    margin: 0;
+    font-size: 15px;
+  }
+}
+.overlay.article-form .form-container form .action-buttons {
+  width: 100%;
+  justify-content: flex-end;
+}
+.overlay.article-form .form-container form .action-buttons button {
+  padding: 10px 15px;
+  background: #005f9a;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #005f9a;
+  font-family: "POppins", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.overlay.article-form .form-container form .action-buttons button:hover {
+  background: white;
+  color: #005f9a;
+}
+.overlay.article-form .form-container form .action-buttons button:first-child {
+  margin-right: 10px;
+}
+
+.overlay.user-form {
+  top: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+.overlay.user-form .form-container {
+  width: 800px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  transition: 0.3s all;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .overlay.user-form .form-container {
+    width: 600px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.user-form .form-container {
+    width: 400px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.user-form .form-container {
+    width: 280px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.user-form .form-container {
+    width: 280px;
+  }
+}
+.overlay.user-form .form-container input[type=text] {
+  padding: 5px 10px;
+  font-size: 20px;
+}
+.overlay.user-form .form-container label {
+  font-family: "Poppins", sans-serif;
+  margin-right: 10px;
+  font-size: 20px;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.user-form .form-container .name-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.user-form .form-container .name-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.user-form .form-container .name-container {
+    flex-direction: column;
+  }
+}
+.overlay.user-form .form-container .name-container,
+.overlay.user-form .form-container .type-container {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.overlay.user-form .form-container .name-container .firstname-container,
+.overlay.user-form .form-container .name-container .lastname-container,
+.overlay.user-form .form-container .type-container .firstname-container,
+.overlay.user-form .form-container .type-container .lastname-container {
+  flex: 0 0 50%;
+}
+.overlay.user-form .form-container .name-container .firstname-container label,
+.overlay.user-form .form-container .name-container .lastname-container label,
+.overlay.user-form .form-container .type-container .firstname-container label,
+.overlay.user-form .form-container .type-container .lastname-container label {
+  margin-right: 10px;
+}
+.overlay.user-form .form-container .name-container .firstname-container input,
+.overlay.user-form .form-container .name-container .lastname-container input,
+.overlay.user-form .form-container .type-container .firstname-container input,
+.overlay.user-form .form-container .type-container .lastname-container input {
+  width: calc(100% - 150px);
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.user-form .form-container .name-container .firstname-container,
+  .overlay.user-form .form-container .name-container .lastname-container,
+  .overlay.user-form .form-container .type-container .firstname-container,
+  .overlay.user-form .form-container .type-container .lastname-container {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.user-form .form-container .name-container .firstname-container,
+  .overlay.user-form .form-container .name-container .lastname-container,
+  .overlay.user-form .form-container .type-container .firstname-container,
+  .overlay.user-form .form-container .type-container .lastname-container {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.user-form .form-container .name-container .firstname-container,
+  .overlay.user-form .form-container .name-container .lastname-container,
+  .overlay.user-form .form-container .type-container .firstname-container,
+  .overlay.user-form .form-container .type-container .lastname-container {
+    margin-bottom: 10px;
+  }
+}
+.overlay.user-form .form-container .form-error {
+  color: red;
+  font-family: "Poppins";
+}
+.overlay.user-form .form-container .action-buttons {
+  margin-top: 10px;
+  width: 100%;
+  justify-content: flex-end;
+}
+.overlay.user-form .form-container .action-buttons button {
+  padding: 10px 15px;
+  background: #005f9a;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #005f9a;
+  font-family: "POppins", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.overlay.user-form .form-container .action-buttons button:hover {
+  background: white;
+  color: #005f9a;
+}
+.overlay.user-form .form-container .action-buttons button:first-child {
+  margin-right: 10px;
+}
+
+.overlay.company-form {
+  top: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+.overlay.company-form .form-container {
+  width: 800px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  transition: 0.3s all;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .overlay.company-form .form-container {
+    width: 600px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.company-form .form-container {
+    width: 400px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.company-form .form-container {
+    width: 280px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.company-form .form-container {
+    width: 280px;
+  }
+}
+.overlay.company-form .form-container input[type=text] {
+  padding: 5px 10px;
+  font-size: 20px;
+}
+.overlay.company-form .form-container label {
+  font-family: "Poppins", sans-serif;
+  margin-right: 10px;
+  font-size: 20px;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.company-form .form-container .logo-name-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.company-form .form-container .logo-name-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.company-form .form-container .logo-name-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.company-form .form-container .logo-name-container .logo-container {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.company-form .form-container .logo-name-container .logo-container {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.company-form .form-container .logo-name-container .logo-container {
+    margin-bottom: 10px;
+  }
+}
+.overlay.company-form .form-container .logo-name-container,
+.overlay.company-form .form-container .status-container {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.overlay.company-form .form-container .logo-name-container .logo-container,
+.overlay.company-form .form-container .logo-name-container .name-container,
+.overlay.company-form .form-container .status-container .logo-container,
+.overlay.company-form .form-container .status-container .name-container {
+  flex: 0 0 50%;
+}
+.overlay.company-form .form-container .logo-name-container .logo-container label,
+.overlay.company-form .form-container .logo-name-container .name-container label,
+.overlay.company-form .form-container .status-container .logo-container label,
+.overlay.company-form .form-container .status-container .name-container label {
+  margin-right: 10px;
+}
+.overlay.company-form .form-container .logo-name-container .logo-container input,
+.overlay.company-form .form-container .logo-name-container .name-container input,
+.overlay.company-form .form-container .status-container .logo-container input,
+.overlay.company-form .form-container .status-container .name-container input {
+  width: calc(100% - 130px);
+}
+.overlay.company-form .form-container .form-error {
+  color: red;
+  font-family: "Poppins";
+}
+.overlay.company-form .form-container .action-buttons {
+  width: 100%;
+  justify-content: flex-end;
+}
+.overlay.company-form .form-container .action-buttons button {
+  padding: 10px 15px;
+  background: #005f9a;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #005f9a;
+  font-family: "POppins", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.overlay.company-form .form-container .action-buttons button:hover {
+  background: white;
+  color: #005f9a;
+}
+.overlay.company-form .form-container .action-buttons button:first-child {
+  margin-right: 10px;
+}
+
+.overlay.company-list {
+  top: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+.overlay.company-list .list-container {
+  width: 800px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  transition: 0.3s all;
+  max-height: 300px;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .overlay.company-list .list-container {
+    width: 600px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.company-list .list-container {
+    width: 400px;
+    max-height: 300px;
+    overflow: scroll;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.company-list .list-container {
+    width: 280px;
+    max-height: 300px;
+    overflow: scroll;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.company-list .list-container {
+    width: 280px;
+    max-height: 300px;
+    overflow: scroll;
+  }
+}
+.overlay.company-list .list-container h1 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+.overlay.company-list .list-container ul {
+  padding-right: 40px;
+  padding-left: 40px;
+}
+.overlay.company-list .list-container .list {
+  width: 100%;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
+}
+.overlay.company-list .list-container .list .company-name {
+  font-weight: 700;
+  font-size: 20px;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.company-list .list-container .list .company-name {
+    font-size: 18px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.company-list .list-container .list .company-name {
+    font-size: 18px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.company-list .list-container .list .company-name {
+    font-size: 18px;
+  }
+}
+.overlay.company-list .list-container .list a {
+  text-decoration: none;
+  background: #005f9a;
+  color: white;
+  border: 1px solid #005f9a;
+  padding: 5px 10px;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: 0.3s all;
+}
+.overlay.company-list .list-container .list a:hover {
+  background: white;
+  color: #005f9a;
+}
+
+.overlay.user-list {
+  top: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+.overlay.user-list .list-container {
+  width: 800px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  transition: 0.3s all;
+  max-height: 300px;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .overlay.user-list .list-container {
+    width: 600px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.user-list .list-container {
+    width: 400px;
+    max-height: 300px;
+    overflow: scroll;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.user-list .list-container {
+    width: 280px;
+    max-height: 300px;
+    overflow: scroll;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.user-list .list-container {
+    width: 280px;
+    max-height: 300px;
+    overflow: scroll;
+  }
+}
+.overlay.user-list .list-container h1 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+.overlay.user-list .list-container ul {
+  padding-right: 40px;
+  padding-left: 40px;
+}
+.overlay.user-list .list-container .list {
+  width: 100%;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
+}
+.overlay.user-list .list-container .list .user-name {
+  font-weight: 700;
+  font-size: 20px;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .overlay.user-list .list-container .list .user-name {
+    font-size: 18px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .overlay.user-list .list-container .list .user-name {
+    font-size: 18px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .overlay.user-list .list-container .list .user-name {
+    font-size: 18px;
+  }
+}
+.overlay.user-list .list-container .list a {
+  text-decoration: none;
+  background: #005f9a;
+  color: white;
+  border: 1px solid #005f9a;
+  padding: 5px 10px;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: 0.3s all;
+}
+.overlay.user-list .list-container .list a:hover {
+  background: white;
+  color: #005f9a;
+}
+
+.manage-article {
+  margin-top: 50px;
+  width: 100%;
+  position: relative;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .manage-article {
+    position: static;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .manage-article {
+    position: static;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .manage-article {
+    position: static;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .manage-article {
+    position: static;
+  }
+}
+.manage-article .form-container {
+  width: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  border-radius: 5px;
+  transition: 0.3s all;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .manage-article .form-container {
+    width: 600px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .manage-article .form-container {
+    width: 400px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .manage-article .form-container {
+    width: 300px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .manage-article .form-container {
+    width: 300px;
+  }
+}
+.manage-article .form-container label {
+  margin-right: 5px;
+  text-wrap: nowrap;
+}
+.manage-article .form-container .row {
+  margin-bottom: 10px;
+  align-items: center;
+}
+.manage-article .form-container .row select {
+  padding: 5px 10px;
+  width: 100%;
+}
+.manage-article .form-container .row input[type=text] {
+  width: 100%;
+  padding: 5px 10px;
+  outline: none;
+}
+.manage-article .form-container .row input[type=date] {
+  font-family: "Poppins", sans-serif;
+  padding: 5px 10px;
+  outline: none;
+}
+.manage-article .form-container .ql-editor {
+  height: 200px;
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .manage-article .form-container .ql-editor {
+    height: 100px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .manage-article .form-container .ql-editor {
+    height: 80px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .manage-article .form-container .ql-editor {
+    height: 80px;
+  }
+}
+.manage-article .form-container .action-btn {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.manage-article .form-container .action-btn button:first-child {
+  margin-right: 10px;
+}
+.manage-article .form-container .action-btn button {
+  padding: 10px 15px;
+  background: #005f9a;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #005f9a;
+  font-family: "POppins", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.manage-article .form-container .action-btn button:hover {
+  background: white;
+  color: #005f9a;
+}
+
+.manage-company {
+  margin-top: 50px;
+  width: 100%;
+  position: relative;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .manage-company {
+    position: static;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .manage-company {
+    position: static;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .manage-company {
+    position: static;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .manage-company {
+    position: static;
+  }
+}
+.manage-company .form-container {
+  width: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  border-radius: 5px;
+  transition: 0.3s all;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .manage-company .form-container {
+    width: 600px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .manage-company .form-container {
+    width: 400px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .manage-company .form-container {
+    width: 300px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .manage-company .form-container {
+    width: 300px;
+  }
+}
+.manage-company .form-container label {
+  margin-right: 5px;
+  text-wrap: nowrap;
+}
+.manage-company .form-container .row {
+  margin-bottom: 10px;
+  align-items: center;
+}
+.manage-company .form-container .row input[type=text] {
+  width: 100%;
+  padding: 5px 10px;
+  outline: none;
+}
+.manage-company .form-container .action-btn {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.manage-company .form-container .action-btn button:first-child {
+  margin-right: 10px;
+}
+.manage-company .form-container .action-btn button {
+  padding: 10px 15px;
+  background: #005f9a;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #005f9a;
+  font-family: "POppins", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.manage-company .form-container .action-btn button:hover {
+  background: white;
+  color: #005f9a;
+}
+
+.manage-user {
+  margin-top: 50px;
+  width: 100%;
+  position: relative;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .manage-user {
+    position: static;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .manage-user {
+    position: static;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .manage-user {
+    position: static;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .manage-user {
+    position: static;
+  }
+}
+.manage-user .form-container {
+  width: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  border-radius: 5px;
+  transition: 0.3s all;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .manage-user .form-container {
+    width: 600px;
+  }
+}
+@media (max-width: 768px) and (min-width: 550px) {
+  .manage-user .form-container {
+    width: 400px;
+  }
+}
+@media (max-width: 550px) and (min-width: 360px) {
+  .manage-user .form-container {
+    width: 300px;
+  }
+}
+@media (max-width: 360px) and (min-width: 0) {
+  .manage-user .form-container {
+    width: 300px;
+  }
+}
+.manage-user .form-container label {
+  margin-right: 5px;
+  text-wrap: nowrap;
+}
+.manage-user .form-container .row {
+  margin-bottom: 10px;
+  align-items: center;
+}
+.manage-user .form-container .row input[type=text] {
+  width: 100%;
+  padding: 5px 10px;
+  outline: none;
+}
+.manage-user .form-container .action-btn {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.manage-user .form-container .action-btn button:first-child {
+  margin-right: 10px;
+}
+.manage-user .form-container .action-btn button {
+  padding: 10px 15px;
+  background: #005f9a;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #005f9a;
+  font-family: "POppins", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.manage-user .form-container .action-btn button:hover {
+  background: white;
+  color: #005f9a;
 }
 
 body {

@@ -1,56 +1,72 @@
 <template>
-  <form
-    @submit.prevent="updateCurrentUser"
-    v-for="user in fetchedUser"
-    :key="user.id"
-  >
-    <label for="firstname">First Name</label>
-    <input type="text" id="firstname" v-model="user.firstname" required />
-    <label for="lastname">Last Name</label>
-    <input type="text" id="lastname" v-model="user.lastname" required />
-    <div>
-      <label for="type">Type</label>
-      <input
-        type="radio"
-        id="writer"
-        value="Writer"
-        v-model="user.type"
-        required
-      />
-      <label for="writer">Writer</label>
-      <input
-        type="radio"
-        id="editor"
-        value="Editor"
-        v-model="user.type"
-        required
-      />
-      <label for="editor">Editor</label>
+  <div class="manage-user">
+    <div class="form-container">
+      <form
+        @submit.prevent="updateCurrentUser"
+        v-for="user in fetchedUser"
+        :key="user.id"
+      >
+        <div class="row">
+          <label for="firstname">First Name</label>
+          <input type="text" id="firstname" v-model="user.firstname" required />
+        </div>
+        <div class="row">
+          <label for="lastname">Last Name</label>
+          <input type="text" id="lastname" v-model="user.lastname" required />
+        </div>
+        <div class="row">
+          <label for="type">Type</label>
+          <div>
+            <input
+              type="radio"
+              id="writer"
+              value="Writer"
+              v-model="user.type"
+              required
+            />
+            <label for="writer">Writer</label>
+            <input
+              type="radio"
+              id="editor"
+              value="Editor"
+              v-model="user.type"
+              required
+            />
+            <label for="editor">Editor</label>
+          </div>
+        </div>
+        <div class="row">
+          <label for="status">Status</label>
+          <div>
+            <input
+              type="radio"
+              id="active"
+              value="Active"
+              v-model="user.status"
+              required
+            />
+            <label for="active">Active</label>
+            <input
+              type="radio"
+              id="inactive"
+              value="Inactive"
+              v-model="user.status"
+              required
+            />
+            <label for="inactive">Inactive</label>
+          </div>
+        </div>
+
+        <p v-if="showValidationError">
+          Please Complete the form before submitting!
+        </p>
+        <div class="action-btn">
+          <button @click="backToDashboard">Cancel</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
     </div>
-    <div>
-      <label for="status">Status</label>
-      <input
-        type="radio"
-        id="active"
-        value="Active"
-        v-model="user.status"
-        required
-      />
-      <label for="active">Active</label>
-      <input
-        type="radio"
-        id="inactive"
-        value="Inactive"
-        v-model="user.status"
-        required
-      />
-      <label for="inactive">Inactive</label>
-    </div>
-    <p v-if="showValidationError">
-      Please Complete the form before submitting!
-    </p>
-    <button type="submit">Submit</button>
-  </form>
+  </div>
 </template>
 
 <script>

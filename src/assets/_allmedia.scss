@@ -1,0 +1,238 @@
+.all-media {
+  margin-top: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
+  width: 100%;
+  overflow-x: hidden;
+
+  .title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 50px;
+    margin: 0;
+    margin-top: 20px;
+  }
+
+  .all-media-actions {
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    button {
+      background: #005f9a;
+      border: 1px solid #005f9a;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      color: white;
+      border-radius: 5px;
+      transition: 0.3s all;
+      margin-right: 10px;
+      margin-bottom: 5px;
+    }
+
+    button:hover {
+      background: white;
+      color: #005f9a;
+    }
+  }
+
+  .search-input {
+    padding: 10px 15px;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+    margin-bottom: 10px;
+  }
+
+  .table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+
+    @include tablet {
+      display: none;
+    }
+
+    @include lg-phone {
+      display: none;
+    }
+
+    @include m-phone {
+      display: none;
+    }
+
+    @include sm-phone {
+      display: none;
+    }
+
+    table {
+      border: 1px solid #005f9a;
+      border-collapse: collapse;
+      margin-bottom: 50px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      transition: 0.5s all;
+
+      thead {
+        background: #005f9a;
+        color: white;
+
+        th {
+          padding: 20px;
+          font-size: 15px;
+          font-weight: 700;
+        }
+      }
+
+      tbody {
+        th {
+          padding: 20px;
+          font-family: "Popins", sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+
+          a {
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            background: #005f9a;
+            color: white;
+            text-decoration: none;
+            border: 1px solid #005f9a;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: 0.3s all;
+          }
+
+          a:hover {
+            background: white;
+            color: #005f9a;
+          }
+
+          .article-link {
+            background: none;
+            color: #005f9a;
+            border: none;
+          }
+
+          .article-link:hover {
+            text-decoration: underline;
+          }
+
+          button:disabled {
+            font-family: "Poppins", sans-serif;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: not-allowed;
+          }
+
+          img {
+            object-fit: cover;
+            height: 140px;
+            width: 140px;
+            transition: 0.3s all;
+          }
+        }
+      }
+    }
+  }
+
+  .mobile-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 50px;
+
+    @include tablet {
+      display: flex;
+    }
+
+    @include lg-phone {
+      display: flex;
+    }
+
+    @include m-phone {
+      display: flex;
+    }
+
+    @include sm-phone {
+      display: flex;
+    }
+
+    .mobile-list {
+      width: 100%;
+
+      .header {
+        background: #005f9a;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .row {
+        border-top: 1px solid #005f9a;
+        border-bottom: 1px solid #005f9a;
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .subtitle {
+          margin-right: 20px;
+          margin-left: 20px;
+        }
+
+        .content {
+          margin-right: 20px;
+        }
+
+        .image-content {
+          margin-top: 10px;
+          margin-bottom: 10px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          img {
+            object-fit: cover;
+            width: 300px;
+            height: 300x;
+          }
+        }
+
+        .action {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+
+          a {
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            background: #005f9a;
+            color: white;
+            text-decoration: none;
+            border: 1px solid #005f9a;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: 0.3s all;
+          }
+
+          a:hover {
+            background: white;
+            color: #005f9a;
+          }
+
+          button:disabled {
+            font-family: "Poppins", sans-serif;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}

@@ -39,27 +39,6 @@
       "lastname": "Doe",
       "type": "Editor",
       "status": "Active"
-    },
-    {
-      "id": "3",
-      "firstname": "Raymond",
-      "lastname": "Doe",
-      "type": "Writer",
-      "status": "Inactive"
-    },
-    {
-      "id": "1af7d809-d635-475b-92d1-c11992c0a98d",
-      "firstname": "Phil",
-      "lastname": "Doe",
-      "type": "Writer",
-      "status": "Active"
-    },
-    {
-      "id": "7c7cb683-1e69-480f-9fc3-73e38d8ea65d",
-      "firstname": "Jan",
-      "lastname": "Doe",
-      "type": "Editor",
-      "status": "Inactive"
     }
   ],
   "article": [
@@ -72,16 +51,16 @@
       "content": "<p>Sample Content</p>",
       "status": "Published",
       "writer": "1",
-      "editor": "",
+      "editor": "2",
       "company": "2"
     },
     {
       "id": "2",
-      "image": "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg",
-      "title": "Sample Title 2",
-      "link": "https://www.google.com",
+      "image": "https://www.rappler.com/tachyon/2023/09/rhenz-abando-august-31-2023.jpeg",
+      "title": "Gilas Pilipinas Wins over China!",
+      "link": "https://www.rappler.com/sports/gilas-pilipinas/philippines-fiba-world-ranking-september-2023/",
       "date": "2023-09-16",
-      "content": "<p>Sample Content</p>",
+      "content": "<p>ATIN ANG WEST PHILIPPINE SEA!</p>",
       "status": "For Edit",
       "writer": "1",
       "editor": "2",
@@ -91,49 +70,25 @@
       "id": "3",
       "image": "https://i.pinimg.com/280x280_RS/c6/7a/c1/c67ac1a235895869ee92e9cc5d77430c.jpg",
       "title": "Sample Title 3",
-      "link": "sample-url",
-      "date": "September 14, 2023",
-      "content": "Sample Content",
-      "status": "Published",
-      "writer": "3",
+      "link": "https://www.facebook.com/",
+      "date": "2023-09-17",
+      "content": "<p>Sample Content</p>",
+      "status": "For Edit",
+      "writer": "1",
       "editor": "2",
       "company": "3"
     },
     {
       "id": "891bb72e-1f15-4efd-8a14-aac643b82df2",
-      "image": "https://i.pinimg.com/280x280_RS/c6/7a/c1/c67ac1a235895869ee92e9cc5d77430c.jpg",
+      "image": "https://static.designboom.com/wp-content/uploads/2023/05/warner-bros-new-logo-designboom-01.jpg",
       "title": "Warner Bros. Article",
       "link": "sample link",
       "date": "2023-09-15",
       "content": "<p>asdasd</p>",
       "status": "For Edit",
-      "writer": "3",
-      "editor": "",
+      "writer": "1",
+      "editor": "2",
       "company": "df86231b-2f30-4acc-8dbc-6af557bb80f9"
-    },
-    {
-      "id": "904d1cc1-acef-44b3-a1b8-d94a40ddf9e8",
-      "image": "https://i.pinimg.com/280x280_RS/c6/7a/c1/c67ac1a235895869ee92e9cc5d77430c.jpg",
-      "title": "Hello World",
-      "link": "sample",
-      "date": "2023-09-15",
-      "content": "<p>content</p>",
-      "status": "For Edit",
-      "writer": "1af7d809-d635-475b-92d1-c11992c0a98d",
-      "editor": "",
-      "company": "df86231b-2f30-4acc-8dbc-6af557bb80f9"
-    },
-    {
-      "id": "a2617032-59ad-4ee0-ab33-325e5ab5ebe8",
-      "image": "https://i.pinimg.com/280x280_RS/c6/7a/c1/c67ac1a235895869ee92e9cc5d77430c.jpg",
-      "title": "Hi World",
-      "link": "asd",
-      "date": "2023-09-15",
-      "content": "<p>asd</p>",
-      "status": "For Edit",
-      "writer": "1af7d809-d635-475b-92d1-c11992c0a98d",
-      "editor": "",
-      "company": "3"
     }
   ]
 }

@@ -5,22 +5,27 @@
         this.$emit('close');
       }
     "
-    class="overlay"
+    class="overlay company-list"
   >
-    <div class="form-container">
+    <div class="list-container">
+      <h1>Company List</h1>
       <ul>
-        <li v-for="company in companies" :key="company.id">
-          {{ company.name }}
-          <RouterLink
-            :to="{
-              name: 'ManageCompany',
-              params: {
-                userID: currentUserID,
-                companyID: company.id,
-              },
-            }"
-            >Update</RouterLink
-          >
+        <li class="list row" v-for="company in companies" :key="company.id">
+          <div class="company-name">
+            {{ company.name }}
+          </div>
+          <div class="update-link">
+            <RouterLink
+              :to="{
+                name: 'ManageCompany',
+                params: {
+                  userID: currentUserID,
+                  companyID: company.id,
+                },
+              }"
+              >Update</RouterLink
+            >
+          </div>
         </li>
       </ul>
     </div>
@@ -61,24 +66,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.overlay {
-  top: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-}
-.form-container {
-  width: 800px;
-  padding: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  border-radius: 10px;
-  transition: 0.3s all;
-}
-</style>
+<style></style>

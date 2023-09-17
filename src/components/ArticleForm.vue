@@ -5,47 +5,82 @@
         this.$emit('close');
       }
     "
-    class="overlay"
+    class="overlay article-form"
   >
     <div class="form-container">
       <form @submit.prevent="addNewArticle">
-        <select name="companies" id="" v-model="newArticle.company">
-          <option
-            v-for="company in companies"
-            :key="company.id"
-            :value="company.id"
-          >
-            {{ company.name }}
-          </option>
-        </select>
-        <label for="title">Title</label>
-        <input type="text" v-model="newArticle.title" required />
-        <label for="image">Image URL</label>
-        <input type="text" v-model="newArticle.image" required />
-        <label for="link">Link</label>
-        <input type="text" v-model="newArticle.link" required />
-        <label for="date">Date</label>
-        <input type="date" v-model="newArticle.date" required />
-        <label for="content">Content</label>
-        <QuillEditor
-          theme="snow"
-          toolbar="full"
-          contentType="html"
-          v-model:content="newArticle.content"
-        />
-        <p v-if="showValidationError">
-          Please Complete the form before submitting!
+        <div class="company-title row">
+          <div class="company-container row">
+            <label for="companies">Company</label>
+            <select
+              name="companies"
+              id="companies"
+              v-model="newArticle.company"
+            >
+              <option
+                v-for="company in companies"
+                :key="company.id"
+                :value="company.id"
+              >
+                {{ company.name }}
+              </option>
+            </select>
+          </div>
+          <div class="title-container row">
+            <label for="title">Title</label>
+            <input type="text" v-model="newArticle.title" required />
+          </div>
+        </div>
+        <div class="image-link-container row">
+          <div class="image-container row">
+            <label for="image">Image URL</label>
+            <input
+              type="text"
+              v-model="newArticle.image"
+              @input="validateImageUrl"
+              required
+            />
+          </div>
+          <div class="link-container row">
+            <label for="link">Link</label>
+            <input
+              type="text"
+              v-model="newArticle.link"
+              @input="validateLinkUrl"
+              required
+            />
+          </div>
+        </div>
+        <p class="form-error" v-if="!isValidImageUrl">Invalid Image Url.</p>
+        <p class="form-error" v-if="!isValidLinkUrl">Invalid Link Url.</p>
+        <div class="date-container">
+          <label for="date">Date</label>
+          <input type="date" v-model="newArticle.date" required />
+        </div>
+        <div class="content-container">
+          <label for="content">Content</label>
+          <QuillEditor
+            theme="snow"
+            toolbar="minimal"
+            contentType="html"
+            v-model:content="newArticle.content"
+          />
+        </div>
+        <p class="form-error" v-if="showValidationError">
+          Please Complete the form without errors before submitting!
         </p>
-        <button
-          @click="
-            () => {
-              this.$emit('close');
-            }
-          "
-        >
-          Cancel
-        </button>
-        <button type="submit">Submit</button>
+        <div class="action-buttons row">
+          <button
+            @click="
+              () => {
+                this.$emit('close');
+              }
+            "
+          >
+            Cancel
+          </button>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   </div>
@@ -79,19 +114,33 @@ export default {
         editor: "",
         company: "",
       },
+      isValidImageUrl: true,
+      isValidLinkUrl: true,
       showValidationError: false,
     };
   },
   methods: {
     async addNewArticle() {
-      if (this.newArticle.content != "" && this.newArticle.company != "") {
-        console.log("Data", this.newArticle);
+      if (
+        this.newArticle.content != "" &&
+        this.newArticle.company != "" &&
+        this.isValidImageUrl &&
+        this.isValidLinkUrl
+      ) {
         this.showValidationError = false;
         await addArticle(this.newArticle);
         window.location.reload();
       } else {
         this.showValidationError = true;
       }
+    },
+    validateImageUrl() {
+      const pattern = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+      this.isValidImageUrl = pattern.test(this.newArticle.image);
+    },
+    validateLinkUrl() {
+      const pattern = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+      this.isValidLinkUrl = pattern.test(this.newArticle.link);
     },
   },
   async mounted() {
@@ -100,24 +149,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.overlay {
-  top: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-}
-.form-container {
-  width: 800px;
-  padding: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  border-radius: 10px;
-  transition: 0.3s all;
-}
-</style>
+<style></style>

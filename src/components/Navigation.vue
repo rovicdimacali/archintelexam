@@ -5,17 +5,22 @@
         <p v-if="userType === 'Writer'">Writer Chassis</p>
         <p v-if="userType === 'Editor'">Editor Chassis</p>
       </div>
-      <div class="current-user row">
+      <div class="current-user row" @click="toggleUserList">
         <div class="user row">
           <img
             src="https://i.pinimg.com/280x280_RS/c6/7a/c1/c67ac1a235895869ee92e9cc5d77430c.jpg"
           />
           <p>{{ selectedUser }}</p>
         </div>
-
-        <fa icon="chevron-down" class="chevron-down" />
+        <div v-if="!isManageRoute" class="chevron-down">
+          <fa icon="chevron-down" class="chevron-down" />
+        </div>
       </div>
-      <div class="user-box col" v-if="!isManageRoute">
+      <div
+        class="user-box col"
+        v-if="!isManageRoute"
+        :class="{ isActive: isActive }"
+      >
         <div
           class="user-list"
           v-for="user in users"
@@ -54,7 +59,7 @@
     </nav>
     <header class="row" :class="{ toggled: isToggled }">
       <div class="bars" @click="toggleClass">
-        <fa icon="bars" class="chevron-down" />
+        <fa icon="bars" />
       </div>
       <div class="title">ArchIntel</div>
     </header>
@@ -70,12 +75,22 @@ import { ref, reactive, watch, onMounted } from "vue";
 export default {
   data() {
     return {
-      isToggled: false,
+      isToggled: true,
+      isActive: false,
     };
   },
   methods: {
     toggleClass() {
       this.isToggled = !this.isToggled;
+    },
+    toggleUserList() {
+      this.isActive = !this.isActive;
+    },
+    handleClickOutside(event) {
+      const navbarElement = this.$el; // Get the root element of the Navbar component
+      if (!navbarElement.contains(event.target)) {
+        this.isToggled = false;
+      }
     },
   },
   setup() {
@@ -132,6 +147,12 @@ export default {
         this.$route.name === "ManageArticle"
       );
     },
+  },
+  mounted() {
+    document.addEventListener("click", this.handleClickOutside);
+  },
+  beforeUnmount() {
+    document.removeEventListener("click", this.handleClickOutside);
   },
 };
 </script>

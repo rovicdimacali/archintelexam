@@ -1,0 +1,300 @@
+.overlay.article-form {
+  top: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+
+  .form-container {
+    width: 800px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    transition: 0.3s all;
+
+    @include tablet {
+      width: 600px;
+    }
+
+    @include lg-phone {
+      width: 400px;
+    }
+
+    @include m-phone {
+      width: 300px;
+    }
+
+    @include sm-phone {
+      width: 300px;
+    }
+    form {
+      input[type="text"] {
+        padding: 5px 10px;
+        font-size: 20px;
+        @include lg-phone {
+          padding: 0px 5px;
+          font-size: 15px;
+        }
+
+        @include m-phone {
+          padding: 0px 5px;
+          font-size: 15px;
+        }
+
+        @include sm-phone {
+          padding: 0px 5px;
+          font-size: 15px;
+        }
+      }
+
+      label {
+        font-family: "Poppins", sans-serif;
+        margin-right: 10px;
+        font-size: 20px;
+        @include lg-phone {
+          font-size: 15px;
+        }
+
+        @include m-phone {
+          font-size: 15px;
+        }
+
+        @include sm-phone {
+          font-size: 15px;
+        }
+      }
+      .company-title {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+
+        @include lg-phone {
+          flex-direction: column;
+          margin-bottom: 10px;
+        }
+
+        @include m-phone {
+          flex-direction: column;
+          margin-bottom: 10px;
+        }
+
+        @include sm-phone {
+          flex-direction: column;
+          margin-bottom: 10px;
+        }
+
+        .company-container {
+          @include lg-phone {
+            margin-bottom: 10px;
+          }
+
+          @include m-phone {
+            margin-bottom: 10px;
+          }
+
+          @include sm-phone {
+            margin-bottom: 10px;
+          }
+        }
+
+        .company-container,
+        .title-container {
+          flex: 0 0 50%;
+          align-items: center;
+
+          @include lg-phone {
+            width: 100%;
+          }
+
+          @include m-phone {
+            width: 100%;
+          }
+
+          @include sm-phone {
+            width: 100%;
+          }
+
+          select {
+            width: 100%;
+            margin-right: 20px;
+            padding: 5px 10px;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+
+            @include lg-phone {
+              padding: 0px 5px;
+              font-size: 15px;
+            }
+
+            @include m-phone {
+              padding: 0px 5px;
+              font-size: 15px;
+            }
+
+            @include sm-phone {
+              padding: 0px 5px;
+              font-size: 15px;
+            }
+          }
+
+          input {
+            width: 100%;
+          }
+        }
+      }
+
+      .image-link-container {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        @include lg-phone {
+          flex-direction: column;
+          margin-bottom: 10px;
+        }
+
+        @include m-phone {
+          flex-direction: column;
+          margin-bottom: 10px;
+        }
+
+        @include sm-phone {
+          flex-direction: column;
+          margin-bottom: 10px;
+        }
+
+        .image-container {
+          @include lg-phone {
+            margin-bottom: 10px;
+          }
+
+          @include m-phone {
+            margin-bottom: 10px;
+          }
+
+          @include sm-phone {
+            margin-bottom: 10px;
+          }
+        }
+
+        .image-container,
+        .link-container {
+          flex: 0 0 50%;
+
+          @include lg-phone {
+            width: 100%;
+          }
+
+          @include m-phone {
+            width: 100%;
+          }
+
+          @include sm-phone {
+            width: 100%;
+          }
+
+          input {
+            width: 100%;
+          }
+        }
+        .image-container input {
+          margin-right: 20px;
+          width: calc(100% - 160px);
+        }
+      }
+
+      .date-container {
+        margin-bottom: 20px;
+        input {
+          padding: 5px 10px;
+          font-size: 20px;
+          font-family: "Poppins", sans-serif;
+          @include lg-phone {
+            padding: 0px 5px;
+            font-size: 15px;
+          }
+
+          @include m-phone {
+            padding: 0px 5px;
+            font-size: 15px;
+          }
+
+          @include sm-phone {
+            padding: 0px 5px;
+            font-size: 15px;
+          }
+        }
+      }
+
+      .content-container {
+        .ql-editor {
+          height: 200px;
+
+          @include lg-phone {
+            height: 100px;
+          }
+
+          @include m-phone {
+            height: 100px;
+          }
+
+          @include sm-phone {
+            height: 100px;
+          }
+        }
+        margin-bottom: 20px;
+      }
+
+      .form-error {
+        color: red;
+        font-family: "Poppins";
+        @include lg-phone {
+          margin: 0;
+          font-size: 15px;
+        }
+
+        @include m-phone {
+          margin: 0;
+          font-size: 15px;
+        }
+
+        @include sm-phone {
+          margin: 0;
+          font-size: 15px;
+        }
+      }
+
+      .action-buttons {
+        width: 100%;
+        justify-content: flex-end;
+
+        button {
+          padding: 10px 15px;
+          background: #005f9a;
+          color: white;
+          border-radius: 5px;
+          border: 1px solid #005f9a;
+          font-family: "POppins", sans-serif;
+          font-weight: 700;
+          cursor: pointer;
+          transition: 0.3s all;
+        }
+
+        button:hover {
+          background: white;
+          color: #005f9a;
+        }
+
+        button:first-child {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

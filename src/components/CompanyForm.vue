@@ -5,45 +5,63 @@
         this.$emit('close');
       }
     "
-    class="overlay"
+    class="overlay company-form"
   >
     <div class="form-container">
       <form @submit.prevent="addNewCompany">
-        <label for="logo">Logo URL</label>
-        <input type="text" id="logo" v-model="newCompany.logo" required />
-        <label for="name">Name</label>
-        <input type="text" id="name" v-model="newCompany.name" required />
-        <label for="type">Status</label>
-        <div>
-          <input
-            type="radio"
-            id="active"
-            value="Active"
-            v-model="newCompany.status"
-            required
-          />
-          <label for="writer">Active</label>
-          <input
-            type="radio"
-            id="inactive"
-            value="Inactive"
-            v-model="newCompany.status"
-          />
-          <label for="editor">Inactive</label>
+        <div class="logo-name-container row">
+          <div class="logo-container">
+            <label for="logo">Logo URL</label>
+            <input
+              @input="validateLogoUrl"
+              type="text"
+              id="logo"
+              v-model="newCompany.logo"
+              required
+            />
+          </div>
+          <div class="name-container">
+            <label for="name">Name</label>
+            <input type="text" id="name" v-model="newCompany.name" required />
+          </div>
         </div>
-        <p v-if="showValidationError">
+        <p class="form-error" v-if="!isValidLogoUrl">Invalid Link Url.</p>
+        <div class="status-container row">
+          <label for="type">Status:</label>
+          <div>
+            <input
+              type="radio"
+              id="active"
+              value="Active"
+              v-model="newCompany.status"
+              required
+            />
+            <label for="active">Active</label>
+            <input
+              type="radio"
+              id="inactive"
+              value="Inactive"
+              v-model="newCompany.status"
+            />
+            <label for="inactive">Inactive</label>
+          </div>
+        </div>
+
+        <p class="form-error" v-if="showValidationError">
           Please Complete the form before submitting!
         </p>
-        <button
-          @click="
-            () => {
-              this.$emit('close');
-            }
-          "
-        >
-          Cancel
-        </button>
-        <button type="submit">Submit</button>
+        <div class="action-buttons row">
+          <button
+            @click="
+              () => {
+                this.$emit('close');
+              }
+            "
+          >
+            Cancel
+          </button>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   </div>
@@ -62,17 +80,22 @@ export default {
         status: "",
       },
       showValidationError: false,
+      isValidLogoUrl: true,
     };
   },
   methods: {
     async addNewCompany() {
-      if (this.newCompany.status != "") {
+      if (this.newCompany.status != "" && this.isValidLogoUrl) {
         await addCompany(this.newCompany);
         this.resetInput();
         this.$emit("close");
       } else {
         this.showValidationError = true;
       }
+    },
+    validateLogoUrl() {
+      const pattern = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+      this.isValidLogoUrl = pattern.test(this.newCompany.logo);
     },
     resetInput() {
       this.newCompany.id = uuidv4();
@@ -84,24 +107,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.overlay {
-  top: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-}
-.form-container {
-  width: 800px;
-  padding: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  border-radius: 10px;
-  transition: 0.3s all;
-}
-</style>
+<style></style>

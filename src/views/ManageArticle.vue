@@ -1,62 +1,75 @@
 <template>
-  <form
-    @submit.prevent="updateCurrentArticle"
-    v-for="article in fetchedArticle"
-    :key="article.id"
-  >
-    <select name="companies" id="" v-model="article.company">
-      <option
-        v-for="company in companies"
-        :key="company.id"
-        :value="company.id"
+  <div class="manage-article">
+    <div class="form-container">
+      <form
+        @submit.prevent="updateCurrentArticle"
+        v-for="article in fetchedArticle"
+        :key="article.id"
       >
-        {{ company.name }}
-      </option>
-    </select>
-    <label for="title">Title</label>
-    <input type="text" v-model="article.title" required />
-    <label for="image">Image URL</label>
-    <input type="text" v-model="article.image" required />
-    <label for="link">Link</label>
-    <input type="text" v-model="article.link" required />
-    <label for="date">Date</label>
-    <label for="type">Status</label>
-    <div>
-      <input
-        type="radio"
-        id="for-edit"
-        value="For Edit"
-        v-model="article.status"
-        required
-      />
-      <label for="writer">For Edit</label>
-      <input
-        type="radio"
-        id="published"
-        value="Published"
-        v-model="article.status"
-      />
-      <label for="editor">Published</label>
+        <div class="row">
+          <label for="companies">Company</label>
+          <select name="companies" id="companies" v-model="article.company">
+            <option
+              v-for="company in companies"
+              :key="company.id"
+              :value="company.id"
+            >
+              {{ company.name }}
+            </option>
+          </select>
+        </div>
+        <div class="row">
+          <label for="title">Title</label>
+          <input type="text" v-model="article.title" required />
+        </div>
+        <div class="row">
+          <label for="image">Image URL</label>
+          <input type="text" v-model="article.image" required />
+        </div>
+        <div class="row">
+          <label for="link">Link</label>
+          <input type="text" v-model="article.link" required />
+        </div>
+        <div class="row">
+          <label for="date">Date</label>
+          <input type="date" v-model="article.date" required />
+        </div>
+        <div v-if="userType === 'Editor'" class="row">
+          <label for="type">Status:</label>
+          <div>
+            <input
+              type="radio"
+              id="for-edit"
+              value="For Edit"
+              v-model="article.status"
+              required
+            />
+            <label for="writer">For Edit</label>
+            <input
+              type="radio"
+              id="published"
+              value="Published"
+              v-model="article.status"
+            />
+            <label for="editor">Published</label>
+          </div>
+        </div>
+        <div class="col">
+          <label for="content">Content</label>
+          <QuillEditor
+            theme="snow"
+            toolbar="minimal"
+            contentType="html"
+            v-model:content="article.content"
+          />
+        </div>
+        <div class="action-btn">
+          <button @click="backToDashboard">Cancel</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
     </div>
-    <input type="date" v-model="article.date" required />
-    <label for="content">Content</label>
-    <QuillEditor
-      theme="snow"
-      toolbar="full"
-      contentType="html"
-      v-model:content="article.content"
-    />
-    <button
-      @click="
-        () => {
-          this.$emit('close');
-        }
-      "
-    >
-      Cancel
-    </button>
-    <button type="submit">Submit</button>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -64,8 +77,10 @@ import { QuillEditor } from "@vueup/vue-quill";
 import {
   loadArticle,
   loadAllCompanies,
+  loadUser,
   updateArticle,
 } from "../composables/callApi";
+import { ref, watch, onBeforeMount } from "vue";
 import { useRoute, useRouter } from "vue-router";
 export default {
   components: { QuillEditor },
@@ -87,11 +102,8 @@ export default {
       this.articleToUdpate.status = this.fetchedArticle[0].status;
       this.articleToUdpate.content = this.fetchedArticle[0].content;
       this.articleToUdpate.editor = this.userID;
-      const updatedArticle = await updateArticle(
-        this.articleID,
-        this.articleToUdpate
-      );
-      console.log("updated article", updatedArticle);
+      await updateArticle(this.articleID, this.articleToUdpate);
+      this.backToDashboard();
     },
   },
   async mounted() {
@@ -101,6 +113,22 @@ export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
+    const userType = ref({ type: "" });
+
+    onBeforeMount(async () => {
+      userType.value = await loadUser(route.params.userID);
+      userType.value = userType.value[0].type;
+
+      console.log("users", users.value);
+    });
+
+    watch(
+      () => route.params,
+      async (newParams) => {
+        userType.value = await loadUser(newParamsuserID);
+        userType.value = userType.value[0].type;
+      }
+    );
 
     function backToDashboard() {
       router.push({
@@ -112,7 +140,7 @@ export default {
       });
     }
 
-    return { backToDashboard };
+    return { backToDashboard, userType };
   },
 };
 </script>

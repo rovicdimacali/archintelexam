@@ -1,0 +1,120 @@
+.manage-article {
+  margin-top: 50px;
+  width: 100%;
+  position: relative;
+  @include tablet {
+    position: static;
+  }
+
+  @include lg-phone {
+    position: static;
+  }
+
+  @include m-phone {
+    position: static;
+  }
+
+  @include sm-phone {
+    position: static;
+  }
+
+  .form-container {
+    width: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    font-family: "Poppins", sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    border-radius: 5px;
+    transition: 0.3s all;
+
+    @include tablet {
+      width: 600px;
+    }
+
+    @include lg-phone {
+      width: 400px;
+    }
+
+    @include m-phone {
+      width: 300px;
+    }
+
+    @include sm-phone {
+      width: 300px;
+    }
+
+    label {
+      margin-right: 5px;
+      text-wrap: nowrap;
+    }
+
+    .row {
+      margin-bottom: 10px;
+      align-items: center;
+
+      select {
+        padding: 5px 10px;
+        width: 100%;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 5px 10px;
+        outline: none;
+      }
+
+      input[type="date"] {
+        font-family: "Poppins", sans-serif;
+        padding: 5px 10px;
+        outline: none;
+      }
+    }
+
+    .ql-editor {
+      height: 200px;
+
+      @include lg-phone {
+        height: 100px;
+      }
+
+      @include m-phone {
+        height: 80px;
+      }
+
+      @include sm-phone {
+        height: 80px;
+      }
+    }
+
+    .action-btn {
+      display: flex;
+      margin-top: 10px;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      button:first-child {
+        margin-right: 10px;
+      }
+
+      button {
+        padding: 10px 15px;
+        background: #005f9a;
+        color: white;
+        border-radius: 5px;
+        border: 1px solid #005f9a;
+        font-family: "POppins", sans-serif;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s all;
+      }
+
+      button:hover {
+        background: white;
+        color: #005f9a;
+      }
+    }
+  }
+}
