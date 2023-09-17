@@ -901,6 +901,7 @@ header.toggled {
   width: calc(100% - 160px);
 }
 .overlay.article-form .form-container form .date-container {
+  margin-top: 10px;
   margin-bottom: 20px;
 }
 .overlay.article-form .form-container form .date-container input {
