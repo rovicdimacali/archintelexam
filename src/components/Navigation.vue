@@ -75,7 +75,7 @@ import { ref, reactive, watch, onMounted } from "vue";
 export default {
   data() {
     return {
-      isToggled: true,
+      isToggled: false,
       isActive: false,
     };
   },
